@@ -1,0 +1,1 @@
+nvcc -arch=sm_50 Kpax.cu GA.cpp Helpers.cpp Main.cpp Population.cpp Test00.cpp Test01.cpp Test02.cpp Test03.cpp Test04.cpp Test10.cpp -o Gattaca.exe
