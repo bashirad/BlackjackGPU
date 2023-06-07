@@ -103,6 +103,9 @@
     <ClCompile Include="..\..\..\BCG\Test03.cpp" />
     <ClCompile Include="..\..\..\BCG\Test04.cpp" />
     <ClCompile Include="..\..\..\BCG\Test10.cpp" />
+    <ClCompile Include="..\..\..\Store\Test11.cpp" />
+    <ClCompile Include="..\..\..\Store\Test12.cpp" />
+    <ClCompile Include="..\..\..\Store\Test13.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\BCG\make-env.bat" />
