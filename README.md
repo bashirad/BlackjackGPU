@@ -58,7 +58,7 @@ Fork the repository on GitHub.
 5. Please ensure that your code follows the project's coding style and conventions. Also, consider adding tests and updating the documentation if necessary.
 
 ## License
-This project is licensed under the ### MIT License. Feel free to use, modify, and distribute the codebase for personal and commercial purposes. However, kindly include attribution to the original project.
+This project is licensed under the MIT License. Feel free to use, modify, and distribute the codebase for personal and commercial purposes. However, kindly include attribution to the original project.
 
 ## Acknowledgements
 We would like to express our gratitude to the open-source community for providing valuable resources, libraries, and frameworks that made this project possible. Your contributions are greatly appreciated.
