@@ -58,7 +58,7 @@ tid   total     nones     stays      hits   doubles    splits
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 10000
 
-void test03(void) {
+void Test03_CUDA_BCG_10000_Games(void) {
   Strategy strategies[NUM_STRATEGIES];
 
   for (int index = 0; index < NUM_STRATEGIES; index++) {

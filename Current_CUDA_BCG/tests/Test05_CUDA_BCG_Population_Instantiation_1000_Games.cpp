@@ -1,13 +1,3 @@
-#include <stdio.h>
-#include "Strategy.h"
-#include "Game.h"
-#include "Kpax.h"
-#include "Helpers.h"
-
-#define NUM_THREADS_PER_BLOCK 5
-#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
-#define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 1000
 /*
 Copyright (c) Ron Coleman
 Permission is hereby granted, free of charge, to any person obtaining
@@ -30,6 +20,17 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#include <stdio.h>
+#include "Strategy.h"
+#include "Game.h"
+#include "Kpax.h"
+#include "Helpers.h"
+
+#define NUM_THREADS_PER_BLOCK 5
+#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
+#define NUM_STRATEGIES NUM_THREADS_TOTAL
+#define NUM_GAMES 1000
+
 #include "GA.h"
 
 /*!
@@ -39,7 +40,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
 	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum. 
 */
-void test10(void) {
+void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void) {
 	Population p1 = Population_();
 	Population p2 = Population_();
 

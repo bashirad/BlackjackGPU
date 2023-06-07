@@ -13,22 +13,22 @@
     <ClCompile Include="..\..\..\BCG\Population.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test10.cpp">
+    <ClCompile Include="..\..\..\BCG\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test04.cpp">
+    <ClCompile Include="..\..\..\BCG\Test04_CUDA_BCG_Evolver_3700_Games.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test03.cpp">
+    <ClCompile Include="..\..\..\BCG\Test03_CUDA_BCG_10000_Games.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test02.cpp">
+    <ClCompile Include="..\..\..\BCG\Test02_CUDA_BCG_1000_Games.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test01.cpp">
+    <ClCompile Include="..\..\..\BCG\Test01_CUDA_BCG_100_Games.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test00.cpp">
+    <ClCompile Include="..\..\..\BCG\Test00_CUDA_BCG_Basic_Env_Check.cpp">
       <Filter>tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Store\Test11.cpp">

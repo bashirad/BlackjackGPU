@@ -54,7 +54,7 @@ double getDiversity(Population* pop);
 #define NUM_GAMES 3700  // See https://docs.microsoft.com/en-us/windows-hardware/drivers/display/tdr-registry-keys
 #define MAX_GENERATIONS 1 //100
 
-void test04(void) {
+void Test04_CUDA_BCG_Evolver_3700_Games(void) {
 	void evolver(int maxGenerations);
 	evolver(MAX_GENERATIONS);
 }

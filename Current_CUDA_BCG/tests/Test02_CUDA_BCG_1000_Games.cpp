@@ -45,9 +45,9 @@ tid        pl     hands      wins blackjack  charlies     loses    breaks      d
 #define NUM_THREADS_PER_BLOCK 100
 #define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 10000
+#define NUM_GAMES 1000
 
-void test02(void) {
+void Test02_CUDA_BCG_1000_Games(void) {
 
   Strategy strategies[NUM_STRATEGIES];
 
