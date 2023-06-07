@@ -22,7 +22,7 @@ To get started with the project, follow these installation instructions:
 
 Clone the repository to your local machine using the following command:
 
-git clone https://github.com/your-username/blackjack-gpu-learning.git
+git clone https://github.com/bashirad/Current_CUDA_BCG.git
 
 Install the necessary dependencies. Make sure you have the following software installed:
 
