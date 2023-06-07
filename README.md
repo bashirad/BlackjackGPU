@@ -6,11 +6,11 @@
 Welcome to the Blackjack GPU Learning project! This research project focuses on using the power of the GPU (Graphics Processing Unit) to learn and play Blackjack optimally.
 
 ## Table of Contents
-### Project Overview
-### Installation
-### Usage
-### Contributing
-### License
+### 1. Project Overview
+### 2. Installation
+### 3. Usage
+### 4. Contributing
+### 5. License
 
 ## Project Overview
 The main goal of this project is to utilize the computational power of the GPU to train a model that can play Blackjack (also known as 21) optimally. Blackjack is a popular card game played between a player and a dealer. The objective of the game is to reach a hand value of 21 or as close to it as possible, without exceeding 21.
