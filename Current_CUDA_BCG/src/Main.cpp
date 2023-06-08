@@ -22,21 +22,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <stdio.h>
 
-void test00(void);
-void test01(void);
-void test02(void);
-void test03(void);
-void test04(void);
-void test10(void);
+void Test00_CUDA_BCG_Basic_Env_Check(void);
+void Test01_CUDA_BCG_100_Games(void);
+void Test02_CUDA_BCG_1000_Games(void);
+void Test03_CUDA_BCG_10000_Games(void);
+void Test04_CUDA_BCG_Evolver_3700_Games(void);
+void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void);
 
 int main(int argc, char** argv) {
   void(*tests[])(void) = { 
-    /*test00,
-    test01,
-    test02,
-    test03,*/
-    test04,
-    test10
+    /*Test00_CUDA_BCG_Basic_Env_Check,
+    Test01_CUDA_BCG_100_Games,
+    Test02_CUDA_BCG_1000_Games,
+    Test03_CUDA_BCG_10000_Games,*/
+    Test04_CUDA_BCG_Evolver_3700_Games,
+    Test05_CUDA_BCG_Population_Instantiation_1000_Games
   };
 
   int n = sizeof(tests) / sizeof(void*);

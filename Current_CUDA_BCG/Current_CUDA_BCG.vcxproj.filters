@@ -1,91 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\..\BCG\GA.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Helpers.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Population.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test04_CUDA_BCG_Evolver_3700_Games.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test03_CUDA_BCG_10000_Games.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test02_CUDA_BCG_1000_Games.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test01_CUDA_BCG_100_Games.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BCG\Test00_CUDA_BCG_Basic_Env_Check.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Store\Test11.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Store\Test12.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Store\Test13.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
+    <ClCompile Include="tests\Test00_CUDA_BCG_Basic_Env_Check.cpp" />
+    <ClCompile Include="tests\Test01_CUDA_BCG_100_Games.cpp" />
+    <ClCompile Include="tests\Test02_CUDA_BCG_1000_Games.cpp" />
+    <ClCompile Include="tests\Test03_CUDA_BCG_10000_Games.cpp" />
+    <ClCompile Include="tests\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
+    <ClCompile Include="tests\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
+    <ClCompile Include="src\GA.cpp" />
+    <ClCompile Include="src\Helpers.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Population.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\BCG\Kpax.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Helpers.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Hand.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Game.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\GA.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Card.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Utils.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Strategy.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Population.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BCG\Player.h">
-      <Filter>include</Filter>
-    </ClInclude>
+    <ClInclude Include="include\Card.h" />
+    <ClInclude Include="include\GA.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Hand.h" />
+    <ClInclude Include="include\Helpers.h" />
+    <ClInclude Include="include\Kpax.h" />
+    <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\Population.h" />
+    <ClInclude Include="include\Strategy.h" />
+    <ClInclude Include="include\Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\BCG\nvcc-env.bat">
-      <Filter>config</Filter>
-    </None>
-    <None Include="..\..\..\BCG\make-gattaca.bat">
-      <Filter>config</Filter>
-    </None>
-    <None Include="..\..\..\BCG\Makefile">
-      <Filter>config</Filter>
-    </None>
-    <None Include="..\..\..\BCG\make-env.bat">
-      <Filter>config</Filter>
-    </None>
+    <None Include="config\make-env.bat" />
+    <None Include="config\Makefile" />
+    <None Include="config\make-gattaca.bat" />
+    <None Include="config\nvcc-env.bat" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -102,8 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="..\..\..\BCG\Kpax.cu">
-      <Filter>src</Filter>
-    </CudaCompile>
+    <CudaCompile Include="src\Kpax.cu" />
   </ItemGroup>
 </Project>

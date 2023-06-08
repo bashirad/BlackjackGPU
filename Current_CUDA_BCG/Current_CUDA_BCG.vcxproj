@@ -47,6 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>T:\Fellowship - Bashir\Project\Current_CUDA_BCG\Current_CUDA_BCG\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -78,40 +79,37 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="..\..\..\BCG\Kpax.cu" />
+    <CudaCompile Include="src\Kpax.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\BCG\Card.h" />
-    <ClInclude Include="..\..\..\BCG\GA.h" />
-    <ClInclude Include="..\..\..\BCG\Game.h" />
-    <ClInclude Include="..\..\..\BCG\Hand.h" />
-    <ClInclude Include="..\..\..\BCG\Helpers.h" />
-    <ClInclude Include="..\..\..\BCG\Kpax.h" />
-    <ClInclude Include="..\..\..\BCG\Player.h" />
-    <ClInclude Include="..\..\..\BCG\Population.h" />
-    <ClInclude Include="..\..\..\BCG\Strategy.h" />
-    <ClInclude Include="..\..\..\BCG\Utils.h" />
+    <ClInclude Include="include\Card.h" />
+    <ClInclude Include="include\GA.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Hand.h" />
+    <ClInclude Include="include\Helpers.h" />
+    <ClInclude Include="include\Kpax.h" />
+    <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\Population.h" />
+    <ClInclude Include="include\Strategy.h" />
+    <ClInclude Include="include\Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\BCG\GA.cpp" />
-    <ClCompile Include="..\..\..\BCG\Helpers.cpp" />
-    <ClCompile Include="..\..\..\BCG\Main.cpp" />
-    <ClCompile Include="..\..\..\BCG\Population.cpp" />
-    <ClCompile Include="..\..\..\BCG\Test00_CUDA_BCG_Basic_Env_Check.cpp" />
-    <ClCompile Include="..\..\..\BCG\Test01_CUDA_BCG_100_Games.cpp" />
-    <ClCompile Include="..\..\..\BCG\Test02_CUDA_BCG_1000_Games.cpp" />
-    <ClCompile Include="..\..\..\BCG\Test03_CUDA_BCG_10000_Games.cpp" />
-    <ClCompile Include="..\..\..\BCG\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
-    <ClCompile Include="..\..\..\BCG\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
-    <ClCompile Include="..\..\..\Store\Test11.cpp" />
-    <ClCompile Include="..\..\..\Store\Test12.cpp" />
-    <ClCompile Include="..\..\..\Store\Test13.cpp" />
+    <ClCompile Include="src\GA.cpp" />
+    <ClCompile Include="src\Helpers.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Population.cpp" />
+    <ClCompile Include="tests\Test00_CUDA_BCG_Basic_Env_Check.cpp" />
+    <ClCompile Include="tests\Test01_CUDA_BCG_100_Games.cpp" />
+    <ClCompile Include="tests\Test02_CUDA_BCG_1000_Games.cpp" />
+    <ClCompile Include="tests\Test03_CUDA_BCG_10000_Games.cpp" />
+    <ClCompile Include="tests\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
+    <ClCompile Include="tests\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\BCG\make-env.bat" />
-    <None Include="..\..\..\BCG\make-gattaca.bat" />
-    <None Include="..\..\..\BCG\Makefile" />
-    <None Include="..\..\..\BCG\nvcc-env.bat" />
+    <None Include="config\make-env.bat" />
+    <None Include="config\make-gattaca.bat" />
+    <None Include="config\Makefile" />
+    <None Include="config\nvcc-env.bat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
