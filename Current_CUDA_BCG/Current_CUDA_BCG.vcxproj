@@ -104,6 +104,7 @@
     <ClCompile Include="tests\Test03_CUDA_BCG_10000_Games.cpp" />
     <ClCompile Include="tests\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
     <ClCompile Include="tests\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
+    <ClCompile Include="tests\Test06_CUDA_BCG_GA_Cross.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\make-env.bat" />

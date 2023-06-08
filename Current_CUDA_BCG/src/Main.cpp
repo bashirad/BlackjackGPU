@@ -21,6 +21,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void Test00_CUDA_BCG_Basic_Env_Check(void);
 void Test01_CUDA_BCG_100_Games(void);
@@ -28,15 +29,17 @@ void Test02_CUDA_BCG_1000_Games(void);
 void Test03_CUDA_BCG_10000_Games(void);
 void Test04_CUDA_BCG_Evolver_3700_Games(void);
 void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void);
+void Test06_CUDA_BCG_GA_Cross(void);
 
 int main(int argc, char** argv) {
   void(*tests[])(void) = { 
     /*Test00_CUDA_BCG_Basic_Env_Check,
     Test01_CUDA_BCG_100_Games,
     Test02_CUDA_BCG_1000_Games,
-    Test03_CUDA_BCG_10000_Games,*/
+    Test03_CUDA_BCG_10000_Games,
     Test04_CUDA_BCG_Evolver_3700_Games,
-    Test05_CUDA_BCG_Population_Instantiation_1000_Games
+    Test05_CUDA_BCG_Population_Instantiation_1000_Games,*/
+    Test06_CUDA_BCG_GA_Cross
   };
 
   int n = sizeof(tests) / sizeof(void*);
@@ -47,4 +50,6 @@ int main(int argc, char** argv) {
     (*tests[k])();
     printf(" PASSED!\n");
   }
+
+  system("pause>0");
 }

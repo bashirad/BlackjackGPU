@@ -11,6 +11,7 @@
     <ClCompile Include="src\Helpers.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Population.cpp" />
+    <ClCompile Include="tests\Test06_CUDA_BCG_GA_Cross.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />

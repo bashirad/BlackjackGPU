@@ -38,17 +38,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	The two lines below causes the function to crash with a stack overflow.
 	To fix it do: Right-click on Gattaca (the project) > Properties > Configuration Properties > Linker > System > Stack Reserve Size
 	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
-	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum. 
+	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum.
 */
-void Test06_CUDA_BCG_GA_Cross(void) {
+void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void) {
 
-	Strategy strategy1 = BasicStrategy_();
-	Strategy strategy2 = BasicStrategy_();
+	Population p1 = Population_();
+	Population p2 = Population_();
 
-	Strategy child = cross(&strategy1, &strategy2);
-
-	if (strategy1.rules == strategy2.rules && strategy2.rules == child.rules) {
-		bool test = true;
-		printf("TEST PASSED! for GA cross() function % d\n", test);
-	}
+	printf("population size = %d\n", sizeof(p1));
 }
