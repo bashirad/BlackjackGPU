@@ -1,3 +1,5 @@
+#include <time.h>
+
 #include "GA.h" 
 #include "Strategy.h"
 #include "Population.h"
@@ -9,6 +11,10 @@ Strategy cross(Strategy* parent1, Strategy* parent2) {
 
 	// Randomly alternate genes from parent 1 and parent 2. 
 	for (int index = 0; index < NUMBER_RULES; index++) {
+
+		// Seed the random number generator with the current time
+		srand(time(NULL));
+
 		int lottery = random(0, 1);
 
 		if (lottery == 0)

@@ -24,3 +24,17 @@ int random(int min, int max);
   \return Floating point number.
 */
 float random();
+
+/*!
+  \brief Prints the contents of a Strategy object.
+  \param strategy Pointer to the Strategy object to be printed.
+*/
+void printStrategy(const Strategy* strategy);
+
+/*!
+  \brief Compares the rules of two Strategy objects and returns whether they are equal.
+  \param strategy1 Pointer to the first Strategy object.
+  \param strategy2 Pointer to the second Strategy object.
+  \return 1 if the rules are equal, 0 otherwise.
+*/
+int compareStrategyRules(const Strategy* strategy1, const Strategy* strategy2);

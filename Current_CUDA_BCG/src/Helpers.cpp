@@ -100,3 +100,38 @@ float random() {
 
 	return ran;
 }
+
+void printStrategy(const Strategy* strategy) {
+	printf("P&L: %f\n", strategy->pl);
+	printf("Rules:\n");
+
+	for (int i = 0; i < NUMBER_RULES; ++i) {
+		printf("%d ", strategy->rules[i]);
+
+		if ((i + 1) % 10 == 0) {
+			printf("\n");
+		}
+	}
+
+	printf("Jump Table:\n");
+	for (int i = 0; i < 4; ++i) {
+		printf("Section %d: %d-%d\n", (i + 1), strategy->jumpTab[i].lower, strategy->jumpTab[i].upper);
+	}
+
+	printf("Visits:\n");
+	printf("STAY: %d\n", strategy->visits[STAY]);
+	printf("HIT: %d\n", strategy->visits[HIT]);
+	printf("DOUBLE_DOWN: %d\n", strategy->visits[DOUBLE_DOWN]);
+	printf("SPLIT: %d\n", strategy->visits[SPLIT]);
+	printf("NO_PLAY: %d\n", strategy->visits[NO_PLAY]);
+}
+
+int compareStrategyRules(const Strategy* strategy1, const Strategy* strategy2) {
+	for (int i = 0; i < NUMBER_RULES; ++i) {
+		if (strategy1->rules[i] != strategy2->rules[i]) {
+			return 0; // Rules are not equal
+		}
+	}
+
+	return 1; // Rules are equal
+}

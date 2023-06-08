@@ -22,8 +22,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <stdio.h>
 #include "Strategy.h"
-#include "Game.h"
-#include "Kpax.h"
+
 #include "Helpers.h"
 
 #define NUM_THREADS_PER_BLOCK 5
@@ -40,10 +39,31 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
 	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum.
 */
-void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void) {
+void Test06_CUDA_BCG_GA_Cross(void) {
 
-	Population p1 = Population_();
-	Population p2 = Population_();
+	Strategy strategy1 = BasicStrategy_();
+	Strategy strategy2 = BasicStrategy_();
 
-	printf("population size = %d\n", sizeof(p1));
+	Strategy child = cross(&strategy1, &strategy2);
+
+	bool status = false;
+
+
+	if (compareStrategyRules(&strategy1, &strategy2) == compareStrategyRules(&strategy2, &child)) {
+		status = true;
+		printf("TEST PASSED! for GA cross() function %s \n", status ? "true" : "false");
+	}
+	else {
+		printf("TEST FAILED! for GA cross() function %s \n", status ? "true" : "false");
+
+	}
+	
+	//printf("strategy1 rules are: \n");
+	//printStrategy(&strategy1);
+
+	//printf("strategy2 rules are: \n");
+	//printStrategy(&strategy2);
+
+	//printf("child rules are: \n");
+	//printStrategy(&child);
 }
