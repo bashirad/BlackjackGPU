@@ -19,6 +19,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -91,17 +92,20 @@ int random(int min, int max) {
 	double scaled = (double)rand() / RAND_MAX;
 	return (max - min + 1)*scaled + min;
 	*/
+	srand(time(NULL));
+
 	// See https://stackoverflow.com/questions/2509679/how-to-generate-a-random-integer-number-from-within-a-range/6852396
 	return (rand() % (max + 1 - min)) + min;
 }
 
 float random() {
+
 	float ran = rand() / (float)RAND_MAX;
 
 	return ran;
 }
 
-void printStrategy(const Strategy* strategy) {
+void printStrategy(Strategy* strategy) {
 	printf("P&L: %f\n", strategy->pl);
 	printf("Rules:\n");
 
@@ -126,7 +130,7 @@ void printStrategy(const Strategy* strategy) {
 	printf("NO_PLAY: %d\n", strategy->visits[NO_PLAY]);
 }
 
-int compareStrategyRules(const Strategy* strategy1, const Strategy* strategy2) {
+int compareStrategyRules(Strategy* strategy1, Strategy* strategy2) {
 	for (int i = 0; i < NUMBER_RULES; ++i) {
 		if (strategy1->rules[i] != strategy2->rules[i]) {
 			return 0; // Rules are not equal
@@ -134,4 +138,25 @@ int compareStrategyRules(const Strategy* strategy1, const Strategy* strategy2) {
 	}
 
 	return 1; // Rules are equal
+}
+
+bool verifyMixtureOfRules(Strategy* parent1, Strategy* parent2, Strategy* child) {
+	bool inheritedFromParent1 = false;
+	bool inheritedFromParent2 = false;
+
+	for (int i = 0; i < NUMBER_RULES; ++i) {
+		if (child->rules[i] == parent1->rules[i]) {
+			inheritedFromParent1 = true;
+		}
+		else if (child->rules[i] == parent2->rules[i]) {
+			inheritedFromParent2 = true;
+		}
+
+		// If both parents' rules are found in the child, it contains a mixture of rules
+		if (inheritedFromParent1 && inheritedFromParent2) {
+			return true;
+		}
+	}
+
+	return false; // No mixture of rules found in the child
 }

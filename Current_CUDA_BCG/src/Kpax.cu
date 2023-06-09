@@ -338,6 +338,126 @@ __host__ __device__ Strategy BasicStrategy_() {
 	return s;
 }
 
+__host__ __device__ Strategy CustomStrategy1_() {
+	Strategy s = {
+		0.0,
+		{
+			//         2  3  4  5  6  7  8  9  T  A
+			/*21*/     H, H, H, H, H, H, H, H, H, H, // Section I: lower=0, upper=9
+			/*20*/     H, H, H, H, H, H, H, H, H, H,
+			/*19*/     H, H, H, H, H, H, H, H, H, H,
+			/*18*/     H, H, H, H, H, H, H, H, H, H,
+			/*17*/     H, H, H, H, H, H, H, H, H, H,
+			/*16*/     H, H, H, H, H, S, S, S, S, S,
+			/*15*/     H, H, H, H, H, S, S, S, S, S,
+			/*14*/     H, H, H, H, H, S, S, S, S, S,
+			/*13*/     H, H, H, H, H, S, S, S, S, S,
+			/*12*/     S, S, H, H, H, S, S, S, S, S,
+
+			/*11*/     P, P, P, P, P, P, P, P, P, S, // Section II: lower=10, upper=17
+			/*10*/     P, P, P, P, P, P, P, P, S, S,
+			/*9 */     S, P, P, P, P, S, S, S, S, S,
+			/*8 */     S, S, S, S, S, S, S, S, S, S,
+			/*7 */     S, S, S, S, S, S, S, S, S, S,
+			/*6 */     S, S, S, S, S, S, S, S, S, S,
+			/*5 */     S, S, S, S, S, S, S, S, S, S,
+			/*4 */     S, S, S, S, S, S, S, S, S, S, // When number of splits limited by house use this row
+
+			/*A,K */   H, H, H, H, H, H, H, H, H, H, // Section III: lower=18, upper=29
+			/*A,Q */   H, H, H, H, H, H, H, H, H, H,
+			/*A,J */   H, H, H, H, H, H, H, H, H, H,
+			/*A,T */   H, H, H, H, H, H, H, H, H, H,
+			/*A,9 */   H, H, H, H, H, H, H, H, H, H,
+			/*A,8 */   H, H, H, H, H, H, H, H, H, H,
+			/*A,7 */   H, P, P, P, P, H, H, S, S, S,
+			/*A,6 */   S, P, P, P, P, S, S, S, S, S,
+			/*A,5 */   S, S, P, P, P, S, S, S, S, S,
+			/*A,4 */   S, S, P, P, P, S, S, S, S, S,
+			/*A,3 */   S, S, S, P, P, S, S, S, S, S,
+			/*A,2 */   S, S, S, P, P, S, S, S, S, S,
+
+			/*A,A */   D, D, D, D, D, D, D, D, D, D, // Section IV: lower=30, upper=42
+			/*T,K */   H, H, H, H, H, H, H, H, H, H,
+			/*Q,Q */   H, H, H, H, H, H, H, H, H, H,
+			/*J,J */   H, H, H, H, H, H, H, H, H, H,
+			/*T,T */   H, H, H, H, H, H, H, H, H, H,
+			/*9,9 */   D, D, D, D, D, H, D, D, H, H,
+			/*8,8 */   D, D, D, D, D, D, D, D, D, D,
+			/*7,7 */   D, D, D, D, D, D, S, S, S, S,
+			/*6,6 */   D, D, D, D, D, S, S, S, S, S,
+			/*5,5 */   P, P, P, P, P, P, P, P, S, S,
+			/*4,4 */   S, S, S, D, D, S, S, S, S, S,
+			/*3,3 */   D, D, D, D, D, D, S, S, S, S,
+			/*2,2 */   D, D, D, D, D, D, S, S, S, S,
+		},
+		{ { 0,   9 },
+		{ 10, 17 },
+		{ 18, 29 },
+		{ 30, 42 } },
+		{ 0, 0, 0, 0, 0 }
+	};
+	return s;
+}
+__host__ __device__ Strategy CustomStrategy2_() {
+	Strategy s = {
+		0.0,
+		{
+			//         2  3  4  5  6  7  8  9  T  A
+			/*21*/     P, P, P, P, P, P, P, P, P, P, // Section I: lower=0, upper=9
+			/*20*/     P, P, P, P, P, P, P, P, P, P,
+			/*19*/     P, P, P, P, P, P, P, P, P, P,
+			/*18*/     P, P, P, P, P, P, P, P, P, P,
+			/*17*/     P, P, P, P, P, P, P, P, P, P,
+			/*16*/     P, P, P, P, P, D, D, D, D, D,
+			/*15*/     P, P, P, P, P, D, D, D, D, D,
+			/*14*/     P, P, P, P, P, D, D, D, D, D,
+			/*13*/     P, P, P, P, P, D, D, D, D, D,
+			/*12*/     D, D, P, P, P, D, D, D, D, D,
+
+			/*11*/     H, H, H, H, H, H, H, H, H, D, // Section II: lower=10, upper=17
+			/*10*/     H, H, H, H, H, H, H, H, D, D,
+			/*9 */     D, H, H, H, H, D, D, D, D, D,
+			/*8 */     D, D, D, D, D, D, D, D, D, D,
+			/*7 */     D, D, D, D, D, D, D, D, D, D,
+			/*6 */     D, D, D, D, D, D, D, D, D, D,
+			/*5 */     D, D, D, D, D, D, D, D, D, D,
+			/*4 */     D, D, D, D, D, D, D, D, D, D, // When number of splits limited by house use this row
+
+			/*A,K */   P, P, P, P, P, P, P, P, P, P, // Section III: lower=18, upper=29
+			/*A,Q */   P, P, P, P, P, P, P, P, P, P,
+			/*A,J */   P, P, P, P, P, P, P, P, P, P,
+			/*A,T */   P, P, P, P, P, P, P, P, P, P,
+			/*A,9 */   P, P, P, P, P, P, P, P, P, P,
+			/*A,8 */   P, P, P, P, P, P, P, P, P, P,
+			/*A,7 */   P, H, H, H, H, P, P, D, D, D,
+			/*A,6 */   D, H, H, H, H, D, D, D, D, D,
+			/*A,5 */   D, D, H, H, H, D, D, D, D, D,
+			/*A,4 */   D, D, H, H, H, D, D, D, D, D,
+			/*A,3 */   D, D, D, H, H, D, D, D, D, D,
+			/*A,2 */   D, D, D, H, H, D, D, D, D, D,
+
+			/*A,A */   P, P, P, P, P, P, P, P, P, P, // Section IV: lower=30, upper=42
+			/*T,K */   P, P, P, P, P, P, P, P, P, P,
+			/*Q,Q */   P, P, P, P, P, P, P, P, P, P,
+			/*J,J */   P, P, P, P, P, P, P, P, P, P,
+			/*T,T */   P, P, P, P, P, P, P, P, P, P,
+			/*9,9 */   P, P, P, P, P, P, P, P, P, P,
+			/*8,8 */   P, P, P, P, P, P, P, P, P, P,
+			/*7,7 */   P, P, P, P, P, P, H, H, H, H,
+			/*6,6 */   P, P, P, P, P, H, H, H, H, H,
+			/*5,5 */   D, D, D, D, D, D, D, D, H, H,
+			/*4,4 */   H, H, H, H, H, H, H, H, H, H,
+			/*3,3 */   P, P, P, P, P, P, H, H, H, H,
+			/*2,2 */   P, P, P, P, P, P, H, H, H, H,
+		},
+		{ { 0,   9 },
+		{ 10, 17 },
+		{ 18, 29 },
+		{ 30, 42 } },
+		{ 0, 0, 0, 0, 0 }
+	};
+	return s;
+}
 #define RANK(rank) (rank >= 10 ? 10 : rank)
 
 __device__ Play doSection4(Hand* hand, Card* upcard, Strategy* strategy) {

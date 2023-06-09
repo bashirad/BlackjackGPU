@@ -29,7 +29,8 @@ void Test02_CUDA_BCG_1000_Games(void);
 void Test03_CUDA_BCG_10000_Games(void);
 void Test04_CUDA_BCG_Evolver_3700_Games(void);
 void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void);
-void Test06_CUDA_BCG_GA_Cross(void);
+void Test06_GA_Cross_Uniformity(void);
+void Test07_GA_Cross_Rule_Inheritance(void);
 
 int main(int argc, char** argv) {
   void(*tests[])(void) = { 
@@ -39,7 +40,8 @@ int main(int argc, char** argv) {
     Test03_CUDA_BCG_10000_Games,
     Test04_CUDA_BCG_Evolver_3700_Games,
     Test05_CUDA_BCG_Population_Instantiation_1000_Games,*/
-    Test06_CUDA_BCG_GA_Cross
+    //Test06_GA_Cross_Uniformity,
+    Test07_GA_Cross_Rule_Inheritance
   };
 
   int n = sizeof(tests) / sizeof(void*);

@@ -1,5 +1,5 @@
 /*
-Copyright (c) Ron Coleman
+Copyright (c) Ron Coleman and Bashir Dahir
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -19,7 +19,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
+#include <time.h>
 #include <stdio.h>
 #include "Strategy.h"
 
@@ -33,37 +33,24 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "GA.h"
 
 /*!
-	\brief Tests the instantiation of two populations.
-	The two lines below causes the function to crash with a stack overflow.
-	To fix it do: Right-click on Gattaca (the project) > Properties > Configuration Properties > Linker > System > Stack Reserve Size
-	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
-	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum.
+	\Test for Rule Inheritance: Create two parent strategies with different rules. 
+	\Then, call the cross function to generate a child strategy. 
+	\Verify that the child strategy contains a mixture of rules inherited from both parents.
 */
-void Test06_CUDA_BCG_GA_Cross(void) {
+void Test07_GA_Cross_Rule_Inheritance(void) {
 
-	Strategy strategy1 = BasicStrategy_();
+	Strategy strategy1 = CustomStrategy1_();
 	Strategy strategy2 = BasicStrategy_();
 
 	Strategy child = cross(&strategy1, &strategy2);
 
-	bool status = false;
-
-
-	if (compareStrategyRules(&strategy1, &strategy2) == compareStrategyRules(&strategy2, &child)) {
-		status = true;
-		printf("TEST PASSED! for GA cross() function %s \n", status ? "true" : "false");
+	bool result = verifyMixtureOfRules(&strategy1, &strategy2, &child);
+	
+	if (result) {
+		printf("TEST PASSED! Test07_GA_Cross_Rule_Inheritance. Pass = %s\n", result? "TRUE" : "FALSE");
 	}
 	else {
-		printf("TEST FAILED! for GA cross() function %s \n", status ? "true" : "false");
+		printf("TEST FAILED! Test07_GA_Cross_Rule_Inheritance. Pass = %s\n", result ? "TRUE" : "FALSE");
 
 	}
-	
-	//printf("strategy1 rules are: \n");
-	//printStrategy(&strategy1);
-
-	//printf("strategy2 rules are: \n");
-	//printStrategy(&strategy2);
-
-	//printf("child rules are: \n");
-	//printStrategy(&child);
 }
