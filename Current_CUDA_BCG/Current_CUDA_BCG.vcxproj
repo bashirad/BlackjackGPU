@@ -94,6 +94,7 @@
     <ClInclude Include="include\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Notes\Notes.cpp" />
     <ClCompile Include="src\GA.cpp" />
     <ClCompile Include="src\Helpers.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="tests\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
     <ClCompile Include="tests\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
     <ClCompile Include="tests\Test06_GA_Cross_Uniformity.cpp" />
+    <ClCompile Include="tests\Test08_GA_Cross_Randomness.cpp" />
     <ClCompile Include="tests\Test07_GA_Cross_Rule_Inheritance.cpp" />
   </ItemGroup>
   <ItemGroup>

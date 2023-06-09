@@ -13,6 +13,8 @@
     <ClCompile Include="src\Population.cpp" />
     <ClCompile Include="tests\Test06_GA_Cross_Uniformity.cpp" />
     <ClCompile Include="tests\Test07_GA_Cross_Rule_Inheritance.cpp" />
+    <ClCompile Include="Notes\Notes.cpp" />
+    <ClCompile Include="tests\Test08_GA_Cross_Randomness.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />
