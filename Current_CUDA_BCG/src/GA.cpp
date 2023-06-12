@@ -1,17 +1,20 @@
+#include <stdio.h>
+#include "time.h" 
 #include "GA.h" 
 #include "Strategy.h"
 #include "Population.h"
 #include "Helpers.h"
+
 
 /*Strategy cross(Strategy* parent1, Strategy* parent2) {
 	// Initialize the child with "NO PLAY" rules.
 	Strategy child = Strategy_();
 
 	// Randomly alternate genes from parent 1 and parent 2. 
-	for (int index = 0; index < NUMBER_RULES; index++) {
-
-		// Seed the random number generator with the current time
-		int lottery = random(0, 1);
+	for (int index = 0; index < 15; index++) {
+		// choose a random number between 0 and 1
+		int lottery = random(0,1);
+		printf("random number is %d\n", lottery);
 
 		if (lottery == 0)
 			child.rules[index] = parent1->rules[index];
@@ -26,23 +29,34 @@ Strategy cross(Strategy* parent1, Strategy* parent2) {
 	// Initialize the child with "NO PLAY" rules.
 	Strategy child = Strategy_();
 
-	// Randomly alternate genes from parent 1 and parent 2.
+	//srand() is not used here because randomly generated sequence is different in every run
+	  
+	// Randomly alternate genes from parent 1 and parent 2. 
 	for (int index = 0; index < NUMBER_RULES; index++) {
+		// choose a random number between 0 and 1
+		int min = 0, max = RAND_MAX;
 
-		// Generate a random number between 0 and 1 (inclusive)
-		double randomNum = (double)rand() / RAND_MAX;
+		double lottery = rand();
 
-		if (randomNum < 0.5)
+		double chance = lottery / RAND_MAX;
+
+		if (chance < 0.5) {
+			//printf("parent 1\n");
 			child.rules[index] = parent1->rules[index];
-		else
+		}
+		else  {
+			//printf("parent 2\n");
 			child.rules[index] = parent2->rules[index];
+		}
 	}
-
 	return child;
 }
 
+void mutate(Strategy* strategy) {
+	mutate(strategy, MUTATION_RATE);
+}
 
-void mutate(Strategy* individual) {
+void mutate(Strategy* individual, float rate) {
 	// We'll draw from this array randomly
 	Play plays[] = { STAY, HIT, DOUBLE_DOWN, SPLIT };
 
@@ -52,7 +66,9 @@ void mutate(Strategy* individual) {
 	for (int index = 0; index < NUMBER_RULES; index++) {
 		float lottery = random();
 
-		if (lottery > MUTATION_RATE)
+		//if (lottery > MUTATION_RATE)
+		//	continue;
+		if (lottery > rate)
 			continue;
 
 		int ran = random(0, numPlays - 1);
@@ -72,7 +88,7 @@ Strategy* tournamentSelect(Population* population) {
 		// Get the individual index as a lottery
 		int lottery = random(0, POPULATION_SIZE-1);
 
-		// Indclude a pointer to this individual in the tournament.
+		// Include a pointer to this individual in the tournament.
 		tournament[index] = &population->individuals[lottery];
 	}
 

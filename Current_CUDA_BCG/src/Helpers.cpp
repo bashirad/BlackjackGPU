@@ -84,16 +84,14 @@ cudaError_t check(cudaError_t status, const char msg[]) {
 	return cudaSuccess;
 }
 
-int random(int min, int max) {
-	/*
-	return min + rand() / (RAND_MAX / (max - min + 1) + 1);
-	*/
-	/*
-	double scaled = (double)rand() / RAND_MAX;
-	return (max - min + 1)*scaled + min;
-	*/
-	srand(time(NULL));
 
+int random(int min, int max) {
+	//return min + rand() / (RAND_MAX / (max - min + 1) + 1);
+	
+	
+	//double scaled = (double)rand() / RAND_MAX;
+	//return (max - min + 1)*scaled + min;
+	
 	// See https://stackoverflow.com/questions/2509679/how-to-generate-a-random-integer-number-from-within-a-range/6852396
 	return (rand() % (max + 1 - min)) + min;
 }
@@ -130,14 +128,22 @@ void printStrategy(Strategy* strategy) {
 	printf("NO_PLAY: %d\n", strategy->visits[NO_PLAY]);
 }
 
-int compareStrategyRules(Strategy* strategy1, Strategy* strategy2) {
+int countStrategyDiffs(Strategy* strategy1, Strategy* strategy2) {
+	int diffs = 0;
 	for (int i = 0; i < NUMBER_RULES; ++i) {
 		if (strategy1->rules[i] != strategy2->rules[i]) {
-			return 0; // Rules are not equal
+			diffs++;
 		}
 	}
 
-	return 1; // Rules are equal
+	return diffs; 
+}
+bool isIdentical(Strategy* strategy1, Strategy* strategy2) {
+	if (countStrategyDiffs == 0)
+		return true;
+	else
+		return false;
+
 }
 
 bool verifyMixtureOfRules(Strategy* parent1, Strategy* parent2, Strategy* child) {

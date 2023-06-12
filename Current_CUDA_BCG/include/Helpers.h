@@ -37,7 +37,9 @@ void printStrategy(Strategy* strategy);
   \param strategy2 Pointer to the second Strategy object.
   \return 1 if the rules are equal, 0 otherwise.
 */
-int compareStrategyRules(Strategy* strategy1, Strategy* strategy2);
+int countStrategyDiffs(Strategy* strategy1, Strategy* strategy2);
+
+bool isIdentical(Strategy* strategy1, Strategy* strategy2);
 
 /*!
   \brief Verifies if the child strategy contains a mixture of rules inherited from both parents.

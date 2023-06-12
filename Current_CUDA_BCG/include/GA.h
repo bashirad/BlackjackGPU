@@ -23,11 +23,17 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #pragma once
 #include "Population.h"
 
-/*! \def Mutation rate as a probability */
+/*! 
+  \def Mutation rate as a probability 
+*/
+//#define MUTATION_RATE 2.000 -- FOR TESTING, YOU CAN INCREASE THE CHANCE OF MUTATION OR DECREASE 
 #define MUTATION_RATE 0.015
 
-/*! \def Size of tournament */
+/*! 
+  \def Size of tournament 
+*/
 #define TOURNAMENT_SIZE 5
+
 
 /*!
   \brief Mates two parent strategies.
@@ -42,6 +48,7 @@ Strategy cross(Strategy* a, Strategy* b);
   \param individual Strategy
 */
 void mutate(Strategy* individual);
+void mutate(Strategy* individual, float rate);
 
 /*!
   \brief Plays tournament among the population.
@@ -71,3 +78,4 @@ Strategy* getFittest(Population* population);
   \return New population of next generation
 */
 Population evolve(Population* population);
+

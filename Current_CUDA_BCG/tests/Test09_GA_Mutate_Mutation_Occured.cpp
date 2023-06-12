@@ -21,16 +21,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include <time.h>
 #include <stdio.h>
+#include <assert.h>
 #include "Strategy.h"
-
 #include "Helpers.h"
+#include "GA.h"
 
 #define NUM_THREADS_PER_BLOCK 5
 #define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 1000
 
-#include "GA.h"
 
 /*!
  \ 3. Test for Randomness: Create two parent strategies with different rules.
@@ -40,34 +40,24 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  \    Analyze the distribution of inherited rules across the child strategies.
 */
 
-void Test08_GA_Cross_Randomness(void) {
+void Test09_GA_Mutate_Mutation_Occured(void) {
 
-	bool status = false;
-
-	Strategy strategy1 = CustomStrategy2_();
+	Strategy strategy1 = BasicStrategy_();
 	Strategy strategy2 = BasicStrategy_();
 
 	srand(0);
+	
+	mutate(&strategy1);
 
-	Strategy child1 = cross(&strategy1, &strategy2); 
+	bool result = isIdentical(&strategy1, &strategy2);
 
-	///////////////////////
-
-	Strategy child2 = cross(&strategy1, &strategy2);
-	Strategy child3 = cross(&strategy1, &strategy2);
-	Strategy child4 = cross(&strategy1, &strategy2); 
-	Strategy child5 = cross(&strategy1, &strategy2);
-	Strategy child6 = cross(&strategy1, &strategy2);
-
-	bool result1 = isIdentical(&child1, &child2);
-	bool result2 = isIdentical(&child3, &child4);
-	bool result3 = isIdentical(&child5, &child6);
-
-	if (result1 == true && result1 == result2 && result1 == result3 && result2 == result3) {
-		printf("TEST PASSED! Test08_GA_Cross_Randomness. Pass = %s\n", result1 ? "TRUE" : "FALSE");
+	
+	
+	if (result) {		// mutation occured when the two strategies have one or more different rules
+		printf("TEST PASSED! Test09_GA_Mutate. Pass = %s\n", result ? "TRUE" : "FALSE");
 	}
 	else {
-		printf("TEST FAILED! Test08_GA_Cross_Randomness. Pass = %s\n", result1 ? "TRUE" : "FALSE");
+		printf("TEST FAILED! Test09_GA_Mutate. Pass = %s\n", result ? "TRUE" : "FALSE");
 	}
 
 
