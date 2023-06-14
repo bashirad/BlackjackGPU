@@ -33,6 +33,7 @@ void Test06_GA_Cross_Uniformity(void);
 void Test07_GA_Cross_Rule_Inheritance(void);
 void Test08_GA_Cross_Randomness(void);
 void Test09_GA_Mutate_Mutation_Occured(void);
+bool Basic(void);
 
 int main(int argc, char** argv) {
   void(*tests[])(void) = { 
@@ -45,8 +46,10 @@ int main(int argc, char** argv) {
     //Test06_GA_Cross_Uniformity,
     //Test07_GA_Cross_Rule_Inheritance,
     //Test08_GA_Cross_Randomness,
-    Test09_GA_Mutate_Mutation_Occured
+    Test09_GA_Mutate_Mutation_Occured,
   };
+  
+  //Basic;
 
   int n = sizeof(tests) / sizeof(void*);
 

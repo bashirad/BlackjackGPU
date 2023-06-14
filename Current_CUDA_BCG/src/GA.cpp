@@ -52,11 +52,13 @@ Strategy cross(Strategy* parent1, Strategy* parent2) {
 	return child;
 }
 
-void mutate(Strategy* strategy) {
+Strategy mutate(Strategy* strategy) {
 	mutate(strategy, MUTATION_RATE);
 }
 
-void mutate(Strategy* individual, float rate) {
+Strategy mutate(Strategy* individual, float rate) {
+	Strategy child = *individual;
+
 	// We'll draw from this array randomly
 	Play plays[] = { STAY, HIT, DOUBLE_DOWN, SPLIT };
 
@@ -75,8 +77,10 @@ void mutate(Strategy* individual, float rate) {
 
 		Play allele = plays[ran];
 
-		individual->rules[index] = allele;
+		child.rules[index] = allele;
 	}
+
+	return child;
 }
 
 Strategy* tournamentSelect(Population* population) {

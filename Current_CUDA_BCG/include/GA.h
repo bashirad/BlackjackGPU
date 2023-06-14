@@ -47,8 +47,8 @@ Strategy cross(Strategy* a, Strategy* b);
   \brief Randomly mutates an individual strategy
   \param individual Strategy
 */
-void mutate(Strategy* individual);
-void mutate(Strategy* individual, float rate);
+Strategy mutate(Strategy* individual);
+Strategy mutate(Strategy* individual, float rate);
 
 /*!
   \brief Plays tournament among the population.

@@ -49,7 +49,7 @@ void Test08_GA_Cross_Randomness(void) {
 
 	srand(0);
 
-	Strategy child1 = cross(&strategy1, &strategy2); 
+	Strategy child1 = cross(&strategy1, &strategy1); 
 
 	///////////////////////
 

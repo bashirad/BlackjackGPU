@@ -92,6 +92,7 @@
     <ClInclude Include="include\Population.h" />
     <ClInclude Include="include\Strategy.h" />
     <ClInclude Include="include\Utils.h" />
+    <ClInclude Include="tests\CrossFunction\Basic.h" />
     <ClInclude Include="tests\testAdd.h" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +101,7 @@
     <ClCompile Include="src\Helpers.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Population.cpp" />
+    <ClCompile Include="tests\CrossFunction\Basic.cpp" />
     <ClCompile Include="tests\Test00_CUDA_BCG_Basic_Env_Check.cpp" />
     <ClCompile Include="tests\Test01_CUDA_BCG_100_Games.cpp" />
     <ClCompile Include="tests\Test02_CUDA_BCG_1000_Games.cpp" />

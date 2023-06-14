@@ -70,5 +70,25 @@
 	int result3 = compareStrategyRules(&child3, &child4);
 	int result4 = compareStrategyRules(&child5, &child6);
 
+	// Testing cross over
+	1. Trivial test of crossing a strategy with itself: exercises both cross and countDiffs
+	2. Trivial test of crossing a strategy with itself: exercises both cross and isIdentical
+	3. Test basic strategy vs. strategy 1 has one change: child will be same as strategy 1 50%
+	4. Test basic strategy vs. strategy 2 has two changes: child will be same as strategy 2 25%.
+
+	// Testing Mutation
+	1. At default rate expect 0.015*430*0.75 +- changes against basic strategy
+	2. At non-default rate 5% expect 0.05*430*0.75 +- changes against basic strategy
+	3. At non-default rate 0% expect 0 changes against basic strategy
+
+	// Test evolve
+	1. Test getFittest
+	2. Test evolve -- crashed
+	3. Test evolve for tracer X and ... 
+
+
+	cout
+
+
 
 */

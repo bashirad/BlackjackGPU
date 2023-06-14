@@ -17,6 +17,7 @@
     <ClCompile Include="tests\Test08_GA_Cross_Randomness.cpp" />
     <ClCompile Include="tests\Test09_GA_Mutate_Mutation_Occured.cpp" />
     <ClCompile Include="tests\testAdd.cpp" />
+    <ClCompile Include="tests\CrossFunction\Basic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="include\Strategy.h" />
     <ClInclude Include="include\Utils.h" />
     <ClInclude Include="tests\testAdd.h" />
+    <ClInclude Include="tests\CrossFunction\Basic.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\make-env.bat" />
