@@ -1,23 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="tests\Test00_CUDA_BCG_Basic_Env_Check.cpp" />
-    <ClCompile Include="tests\Test01_CUDA_BCG_100_Games.cpp" />
-    <ClCompile Include="tests\Test02_CUDA_BCG_1000_Games.cpp" />
-    <ClCompile Include="tests\Test03_CUDA_BCG_10000_Games.cpp" />
-    <ClCompile Include="tests\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
-    <ClCompile Include="tests\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Test00_CUDA_BCG_Basic_Env_Check.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Test01_CUDA_BCG_100_Games.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Test02_CUDA_BCG_1000_Games.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Test03_CUDA_BCG_10000_Games.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
+    <ClCompile Include="tests\GA\Cross\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
     <ClCompile Include="src\GA.cpp" />
     <ClCompile Include="src\Helpers.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Population.cpp" />
-    <ClCompile Include="tests\Test06_GA_Cross_Uniformity.cpp" />
-    <ClCompile Include="tests\Test07_GA_Cross_Rule_Inheritance.cpp" />
+    <ClCompile Include="tests\GA\Cross\Test06_GA_Cross_Uniformity.cpp" />
+    <ClCompile Include="tests\GA\Cross\Test07_GA_Cross_Rule_Inheritance.cpp" />
     <ClCompile Include="Notes\Notes about the GA Test Cases.cpp" />
-    <ClCompile Include="tests\Test08_GA_Cross_Randomness.cpp" />
-    <ClCompile Include="tests\Test09_GA_Mutate_Mutation_Occured.cpp" />
-    <ClCompile Include="tests\testAdd.cpp" />
-    <ClCompile Include="tests\CrossFunction\Basic.cpp" />
+    <ClCompile Include="tests\GA\Cross\Test08_GA_Cross_Randomness.cpp" />
+    <ClCompile Include="tests\GA\Mutate\Test09_GA_Mutate_Mutation_Occured.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />
@@ -30,8 +28,6 @@
     <ClInclude Include="include\Population.h" />
     <ClInclude Include="include\Strategy.h" />
     <ClInclude Include="include\Utils.h" />
-    <ClInclude Include="tests\testAdd.h" />
-    <ClInclude Include="tests\CrossFunction\Basic.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\make-env.bat" />

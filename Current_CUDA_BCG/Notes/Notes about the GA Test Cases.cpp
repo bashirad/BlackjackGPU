@@ -51,25 +51,6 @@
 	assert(same);
 	bool same = isIdentical(&strategy2, &child1);
 
-
-	//////////////////////////
-	// Test for random bugs in cross
-	srand(0);
-	Strategy child2 = cross(&strategy1, &strategy2);
-	Strategy child3 = cross(&strategy1, &strategy2);
-
-
-	Strategy child4 = cross(&strategy1, &strategy2);
-	Strategy child5 = cross(&strategy1, &strategy2);
-	Strategy child6 = cross(&strategy1, &strategy2);
-
-	bool status = false;
-
-	int result1 = compareStrategyRules(&strategy1, &child1);
-	int result2 = compareStrategyRules(&child1, &child2);
-	int result3 = compareStrategyRules(&child3, &child4);
-	int result4 = compareStrategyRules(&child5, &child6);
-
 	// Testing cross over
 	1. Trivial test of crossing a strategy with itself: exercises both cross and countDiffs
 	2. Trivial test of crossing a strategy with itself: exercises both cross and isIdentical
