@@ -21,7 +21,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <stdio.h>
-#include <assert.h>
 #include "Strategy.h"
 
 #include "Helpers.h"
@@ -34,20 +33,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "GA.h"
 
 /*!
-	\brief Tests the instantiation of two populations.
-	\Test for Uniformity: Create two parent strategies with identical rules. 
-	\Use the cross function to generate multiple child strategies. 
-	\Verify that all the generated child strategies have the same rules as the parents
+	\brief Tests the isIdentical() and countStrategyDiffs() functions.
+	\Test for Uniformity: Create one strategy. 
+	\Use isIdentical function to check the one strategy against itself. 
+	\Verify the one strategy is equal to itself.
 */
-void Test06_GA_Cross_Uniformity(void) {
+void isIdentical_test(void) {
 
 	// Test for bugs in isIdentical
 	Strategy strategy1 = BasicStrategy_();
 
 	bool same = isIdentical(&strategy1, &strategy1);
-	//assert(same && "TEST FAILED! Test06_GA_Cross_Uniformity.\n");
 
-
-	printf("TEST PASSED! Test06_GA_Cross_Uniformity.\n");
+	if (same)
+		printf("isIdentical_test PASSED.\n");
+	else 
+		printf("isIdentical_test FAILED.\n");
 
 }

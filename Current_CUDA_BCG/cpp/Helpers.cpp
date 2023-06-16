@@ -139,7 +139,7 @@ int countStrategyDiffs(Strategy* strategy1, Strategy* strategy2) {
 	return diffs; 
 }
 bool isIdentical(Strategy* strategy1, Strategy* strategy2) {
-	if (countStrategyDiffs == 0)
+	if (countStrategyDiffs(strategy1, strategy2) == 0)
 		return true;
 	else
 		return false;

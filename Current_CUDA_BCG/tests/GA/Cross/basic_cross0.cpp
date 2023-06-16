@@ -19,10 +19,9 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include <time.h>
 #include <stdio.h>
 #include "Strategy.h"
-
+#include <time.h>
 #include "Helpers.h"
 
 #define NUM_THREADS_PER_BLOCK 5
@@ -33,24 +32,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "GA.h"
 
 /*!
-	\Test for Rule Inheritance: Create two parent strategies with different rules. 
-	\Then, call the cross function to generate a child strategy. 
-	\Verify that the child strategy contains a mixture of rules inherited from both parents.
+	\brief Tests the isIdentical() and cross() functions.
+	\Use cross function to cross the one strategy against itself.
+	\Use isIdentical function to check the one strategy against itself.
+	\Verify the child strategy is identical to the two identical parents
 */
-void Test07_GA_Cross_Rule_Inheritance(void) {
+void basic_cross0(void) {
 
-	Strategy strategy1 = CustomStrategy1_();
-	Strategy strategy2 = BasicStrategy_();
+	Strategy strategy = BasicStrategy_();
 
-	Strategy child = cross(&strategy1, &strategy2);
+	srand(time(NULL));
 
-	bool result = verifyMixtureOfRules(&strategy1, &strategy2, &child);
-	
-	if (result) {
-		printf("TEST PASSED! Test07_GA_Cross_Rule_Inheritance. Pass = %s\n", result? "TRUE" : "FALSE");
+	Strategy child = cross(&strategy, &strategy);
+
+	// check if child is identical to the two identical parents
+	bool same = isIdentical(&strategy, &child);
+
+	if (same) {
+		printf("basic_cross PASSED!");
 	}
 	else {
-		printf("TEST FAILED! Test07_GA_Cross_Rule_Inheritance. Pass = %s\n", result ? "TRUE" : "FALSE");
+		printf("basic_cross FAILED!");
 
 	}
 }

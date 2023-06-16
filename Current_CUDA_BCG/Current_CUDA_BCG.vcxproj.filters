@@ -7,14 +7,14 @@
     <ClCompile Include="tests\CUDA_BCG\Test03_CUDA_BCG_10000_Games.cpp" />
     <ClCompile Include="tests\CUDA_BCG\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
     <ClCompile Include="tests\GA\Cross\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
-    <ClCompile Include="src\GA.cpp" />
-    <ClCompile Include="src\Helpers.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Population.cpp" />
-    <ClCompile Include="tests\GA\Cross\Test06_GA_Cross_Uniformity.cpp" />
-    <ClCompile Include="tests\GA\Cross\Test07_GA_Cross_Rule_Inheritance.cpp" />
+    <ClCompile Include="cpp\GA.cpp" />
+    <ClCompile Include="cpp\Helpers.cpp" />
+    <ClCompile Include="cpp\Main.cpp" />
+    <ClCompile Include="cpp\Population.cpp" />
+    <ClCompile Include="tests\GA\Cross\isIdentical_test.cpp" />
+    <ClCompile Include="tests\GA\Cross\basic_cross0.cpp" />
     <ClCompile Include="Notes\Notes about the GA Test Cases.cpp" />
-    <ClCompile Include="tests\GA\Cross\Test08_GA_Cross_Randomness.cpp" />
+    <ClCompile Include="tests\GA\Cross\basic_cross1.cpp" />
     <ClCompile Include="tests\GA\Mutate\Test09_GA_Mutate_Mutation_Occured.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +28,7 @@
     <ClInclude Include="include\Population.h" />
     <ClInclude Include="include\Strategy.h" />
     <ClInclude Include="include\Utils.h" />
+    <ClInclude Include="tests\GA\Strategies\Strategy1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\make-env.bat" />
@@ -50,6 +51,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="src\Kpax.cu" />
+    <CudaCompile Include="cpp\Kpax.cu" />
   </ItemGroup>
 </Project>

@@ -29,9 +29,9 @@ void Test02_CUDA_BCG_1000_Games(void);
 void Test03_CUDA_BCG_10000_Games(void);
 void Test04_CUDA_BCG_Evolver_3700_Games(void);
 void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void);
-void Test06_GA_Cross_Uniformity(void);
-void Test07_GA_Cross_Rule_Inheritance(void);
-void Test08_GA_Cross_Randomness(void);
+void isIdentical_test(void);
+void basic_cross0(void);
+void basic_cross1(void);
 void Test09_GA_Mutate_Mutation_Occured(void);
 bool Basic(void);
 
@@ -43,10 +43,10 @@ int main(int argc, char** argv) {
     Test03_CUDA_BCG_10000_Games,
     Test04_CUDA_BCG_Evolver_3700_Games,
     Test05_CUDA_BCG_Population_Instantiation_1000_Games,*/
-    //Test06_GA_Cross_Uniformity,
-    //Test07_GA_Cross_Rule_Inheritance,
-    //Test08_GA_Cross_Randomness,
-    Test09_GA_Mutate_Mutation_Occured,
+    //isIdentical_test,
+    //basic_cross0,
+    basic_cross1//,
+    //Test09_GA_Mutate_Mutation_Occured,
   };
   
   //Basic;

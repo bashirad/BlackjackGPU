@@ -40,7 +40,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  \    Analyze the distribution of inherited rules across the child strategies.
 */
 
-void Test08_GA_Cross_Randomness(void) {
+void basic_cross1(void) {
 
 	bool status = false;
 

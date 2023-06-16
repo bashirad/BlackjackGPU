@@ -6,15 +6,14 @@
 #include "Helpers.h"
 
 
-/*Strategy cross(Strategy* parent1, Strategy* parent2) {
+Strategy cross(Strategy* parent1, Strategy* parent2) {
 	// Initialize the child with "NO PLAY" rules.
 	Strategy child = Strategy_();
 
 	// Randomly alternate genes from parent 1 and parent 2. 
-	for (int index = 0; index < 15; index++) {
+	for (int index = 0; index < NUMBER_RULES; index++) {
 		// choose a random number between 0 and 1
 		int lottery = random(0,1);
-		printf("random number is %d\n", lottery);
 
 		if (lottery == 0)
 			child.rules[index] = parent1->rules[index];
@@ -23,37 +22,11 @@
 	}
 
 	return child;
-}*/
-
-Strategy cross(Strategy* parent1, Strategy* parent2) {
-	// Initialize the child with "NO PLAY" rules.
-	Strategy child = Strategy_();
-
-	//srand() is not used here because randomly generated sequence is different in every run
-	  
-	// Randomly alternate genes from parent 1 and parent 2. 
-	for (int index = 0; index < NUMBER_RULES; index++) {
-		// choose a random number between 0 and 1
-		int min = 0, max = RAND_MAX;
-
-		double lottery = rand();
-
-		double chance = lottery / RAND_MAX;
-
-		if (chance < 0.5) {
-			//printf("parent 1\n");
-			child.rules[index] = parent1->rules[index];
-		}
-		else  {
-			//printf("parent 2\n");
-			child.rules[index] = parent2->rules[index];
-		}
-	}
-	return child;
 }
 
 Strategy mutate(Strategy* strategy) {
-	mutate(strategy, MUTATION_RATE);
+	Strategy result = mutate(strategy, MUTATION_RATE);
+	return result;
 }
 
 Strategy mutate(Strategy* individual, float rate) {
