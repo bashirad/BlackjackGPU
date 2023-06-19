@@ -106,9 +106,9 @@
     <ClCompile Include="tests\CUDA_BCG\Test03_CUDA_BCG_10000_Games.cpp" />
     <ClCompile Include="tests\CUDA_BCG\Test04_CUDA_BCG_Evolver_3700_Games.cpp" />
     <ClCompile Include="tests\GA\Cross\Test05_CUDA_BCG_Population_Instantiation_1000_Games.cpp" />
-    <ClCompile Include="tests\GA\Cross\isIdentical_test.cpp" />
-    <ClCompile Include="tests\GA\Cross\basic_cross1.cpp" />
-    <ClCompile Include="tests\GA\Cross\basic_cross0.cpp" />
+    <ClCompile Include="tests\GA\Cross\isIdentical.cpp" />
+    <ClCompile Include="tests\GA\Cross\cross1.cpp" />
+    <ClCompile Include="tests\GA\Cross\cross0.cpp" />
     <ClCompile Include="tests\GA\Mutate\Test09_GA_Mutate_Mutation_Occured.cpp" />
   </ItemGroup>
   <ItemGroup>

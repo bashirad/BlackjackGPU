@@ -19,9 +19,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#include <time.h>
 #include <stdio.h>
 #include "Strategy.h"
-#include <time.h>
+
 #include "Helpers.h"
 
 #define NUM_THREADS_PER_BLOCK 5
@@ -30,29 +31,41 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define NUM_GAMES 1000
 
 #include "GA.h"
+#include "../Strategies/Strategy1.h"
 
 /*!
-	\brief Tests the isIdentical() and cross() functions.
-	\Use cross function to cross the one strategy against itself.
-	\Use isIdentical function to check the one strategy against itself.
-	\Verify the child strategy is identical to the two identical parents
+ \ 3. Test for Randomness: Create two parent strategies with different rules.
+ \    Use the cross function to generate multiple child strategies.
+ \    Print the rules of each child strategy and observe if there is a random alternation of
+ \	  genes from both parents.
+ \    Analyze the distribution of inherited rules across the child strategies.
 */
-void basic_cross0(void) {
 
-	Strategy strategy = BasicStrategy_();
+void cross1(void) {
+
+	Strategy strategy1 = Strategy1_();
+	Strategy strategy2 = BasicStrategy_();
 
 	srand(time(NULL));
 
-	Strategy child = cross(&strategy, &strategy);
+	Strategy child;
 
-	// check if child is identical to the two identical parents
-	bool same = isIdentical(&strategy, &child);
+	int count = 0;
 
-	if (same) {
-		printf("basic_cross PASSED!");
+	for (int i = 0; i < 100; i++) {
+
+		child = cross(&strategy1, &strategy2);
+
+		if (isIdentical(&strategy1, &child)) count++;
+	}
+
+	if (count >= 45 && count <= 55) {
+		printf("cross1\n");
+		printf("TEST PASSED! child = strategy1 %d %%\n", count);
 	}
 	else {
-		printf("basic_cross FAILED!");
-
+		printf("cross1\n");
+		printf("TEST FAILED child = strategy1 %d %%\n", count);
 	}
+
 }

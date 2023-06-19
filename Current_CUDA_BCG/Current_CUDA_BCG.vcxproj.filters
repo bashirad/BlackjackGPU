@@ -11,10 +11,10 @@
     <ClCompile Include="cpp\Helpers.cpp" />
     <ClCompile Include="cpp\Main.cpp" />
     <ClCompile Include="cpp\Population.cpp" />
-    <ClCompile Include="tests\GA\Cross\isIdentical_test.cpp" />
-    <ClCompile Include="tests\GA\Cross\basic_cross0.cpp" />
+    <ClCompile Include="tests\GA\Cross\isIdentical.cpp" />
+    <ClCompile Include="tests\GA\Cross\cross0.cpp" />
     <ClCompile Include="Notes\Notes about the GA Test Cases.cpp" />
-    <ClCompile Include="tests\GA\Cross\basic_cross1.cpp" />
+    <ClCompile Include="tests\GA\Cross\cross1.cpp" />
     <ClCompile Include="tests\GA\Mutate\Test09_GA_Mutate_Mutation_Occured.cpp" />
   </ItemGroup>
   <ItemGroup>

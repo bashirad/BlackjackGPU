@@ -19,10 +19,9 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include <time.h>
 #include <stdio.h>
 #include "Strategy.h"
-
+#include <time.h>
 #include "Helpers.h"
 
 #define NUM_THREADS_PER_BLOCK 5
@@ -33,42 +32,28 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "GA.h"
 
 /*!
- \ 3. Test for Randomness: Create two parent strategies with different rules.
- \    Use the cross function to generate multiple child strategies.
- \    Print the rules of each child strategy and observe if there is a random alternation of
- \	  genes from both parents.
- \    Analyze the distribution of inherited rules across the child strategies.
+	\brief Tests the isIdentical() and cross() functions.
+	\Use cross function to cross the one strategy against itself.
+	\Use isIdentical function to check the one strategy against itself.
+	\Verify the child strategy is identical to the two identical parents
 */
+void cross0(void) {
 
-void basic_cross1(void) {
+	Strategy strategy = BasicStrategy_();
 
-	bool status = false;
+	srand(time(NULL));
 
-	Strategy strategy1 = CustomStrategy2_();
-	Strategy strategy2 = BasicStrategy_();
+	Strategy child = cross(&strategy, &strategy);
 
-	srand(0);
+	// check if child is identical to the two identical parents
+	bool same = isIdentical(&strategy, &child);
 
-	Strategy child1 = cross(&strategy1, &strategy1); 
-
-	///////////////////////
-
-	Strategy child2 = cross(&strategy1, &strategy2);
-	Strategy child3 = cross(&strategy1, &strategy2);
-	Strategy child4 = cross(&strategy1, &strategy2); 
-	Strategy child5 = cross(&strategy1, &strategy2);
-	Strategy child6 = cross(&strategy1, &strategy2);
-
-	bool result1 = isIdentical(&child1, &child2);
-	bool result2 = isIdentical(&child3, &child4);
-	bool result3 = isIdentical(&child5, &child6);
-
-	if (result1 == true && result1 == result2 && result1 == result3 && result2 == result3) {
-		printf("TEST PASSED! Test08_GA_Cross_Randomness. Pass = %s\n", result1 ? "TRUE" : "FALSE");
+	if (same) {
+		printf("cross0\n");
+		printf("TEST PASSED!\n");
 	}
 	else {
-		printf("TEST FAILED! Test08_GA_Cross_Randomness. Pass = %s\n", result1 ? "TRUE" : "FALSE");
+		printf("cross0\n");
+		printf("TEST FAILED!\n");
 	}
-
-
 }

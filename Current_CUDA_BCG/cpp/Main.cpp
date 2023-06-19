@@ -29,9 +29,9 @@ void Test02_CUDA_BCG_1000_Games(void);
 void Test03_CUDA_BCG_10000_Games(void);
 void Test04_CUDA_BCG_Evolver_3700_Games(void);
 void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void);
-void isIdentical_test(void);
-void basic_cross0(void);
-void basic_cross1(void);
+void isIdentical(void);
+void cross0(void);
+void cross1(void);
 void Test09_GA_Mutate_Mutation_Occured(void);
 bool Basic(void);
 
@@ -43,9 +43,9 @@ int main(int argc, char** argv) {
     Test03_CUDA_BCG_10000_Games,
     Test04_CUDA_BCG_Evolver_3700_Games,
     Test05_CUDA_BCG_Population_Instantiation_1000_Games,*/
-    //isIdentical_test,
-    //basic_cross0,
-    basic_cross1//,
+    isIdentical,
+    cross0,
+    cross1//,
     //Test09_GA_Mutate_Mutation_Occured,
   };
   
@@ -53,11 +53,11 @@ int main(int argc, char** argv) {
 
   int n = sizeof(tests) / sizeof(void*);
 
-  printf("running tests: %d\n", n);
+  printf("running tests: %d\n\n", n);
   for (int k = 0; k < n; k++) {
-    printf("test %02x: \n", k);
+    printf("test %02x: ", k);
     (*tests[k])();
-    printf(" PASSED!\n");
+    printf("\n\n");
   }
 
   system("pause>0");

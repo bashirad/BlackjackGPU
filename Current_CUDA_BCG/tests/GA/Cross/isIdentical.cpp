@@ -38,16 +38,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	\Use isIdentical function to check the one strategy against itself. 
 	\Verify the one strategy is equal to itself.
 */
-void isIdentical_test(void) {
+void isIdentical(void) {
 
 	// Test for bugs in isIdentical
 	Strategy strategy1 = BasicStrategy_();
 
 	bool same = isIdentical(&strategy1, &strategy1);
 
-	if (same)
-		printf("isIdentical_test PASSED.\n");
-	else 
-		printf("isIdentical_test FAILED.\n");
-
+	if (same) {
+		printf("isIdentical\n");
+		printf("TEST PASSED!\n");
+	}
+	else {
+		printf("isIdentical\n");
+		printf("TEST FAILED!\n");
+	}
 }
