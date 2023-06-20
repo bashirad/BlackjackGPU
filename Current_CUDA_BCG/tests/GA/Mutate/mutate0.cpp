@@ -21,49 +21,43 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include <time.h>
 #include <stdio.h>
+#include <assert.h>
 #include "Strategy.h"
-
 #include "Helpers.h"
+#include "GA.h"
 
 #define NUM_THREADS_PER_BLOCK 5
 #define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 1000
 
-#include "GA.h"
-#include "../Strategies/Strategy1.h"
 
 /*!
- \ 3. Test basic strategy vs. strategy 1 has one change.
- \    Use the cross function to generate multiple child strategies.
- \    Check the percent of child strategies that are identical to strategy1.
- \    Verify child will be same as Strategy1 50%.
+ \ 3. Test mutation at non-default rate of 0.0.
+ \    Use the mutate() to generate a mutated version of the basic strategy and set rate to 0.0.
+ \    Go through the rules of the mutated version and count the changes made bu mutate().
+ \    Expect 0.0*430*0.75 +- (0+-) or 0 changes.
 */
 
-void cross1(void) {
+void mutate0(void) {
 
-	Strategy strategy1 = Strategy1_();
-	Strategy strategy2 = BasicStrategy_();
+	Strategy basicStrategy = BasicStrategy_();
 
-	srand(time(NULL));
-
-	Strategy child;
+	Strategy mutatedStrategy = mutate(&basicStrategy, 0.0);
 
 	int count = 0;
 
-	for (int i = 0; i < 100; i++) {
-
-		child = cross(&strategy1, &strategy2);
-
-		if (isIdentical(&strategy1, &child)) count++;
+	// Go through the strategy rules and check for changes according to the default rate
+	for (int i = 0; i < NUMBER_RULES; i++) {
+		if (basicStrategy.rules[i] != mutatedStrategy.rules[i]) count++;
 	}
-
-	if (count >= 45 && count <= 55) {
-		printf("cross1\n");
+	// mutation occured when the two strategies have one or more different rules
+	if (count == 0) {
+		printf("mutate05: %d changes\n", count);
 		printf("TEST PASSED!\n");
 	}
 	else {
-		printf("cross1\n");
+		printf("mutate05: %d changes\n", count);
 		printf("TEST FAILED!\n");
 	}
 

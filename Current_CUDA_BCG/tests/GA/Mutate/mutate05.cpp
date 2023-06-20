@@ -1,5 +1,5 @@
 /*
-Copyright (c) Ron Coleman
+Copyright (c) Ron Coleman and Bashir Dahir
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -19,31 +19,46 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
+#include <time.h>
 #include <stdio.h>
+#include <assert.h>
 #include "Strategy.h"
-#include "Game.h"
-#include "Kpax.h"
 #include "Helpers.h"
+#include "GA.h"
 
 #define NUM_THREADS_PER_BLOCK 5
 #define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 1000
 
-#include "GA.h"
 
 /*!
-	\brief Tests the instantiation of two populations.
-	The two lines below causes the function to crash with a stack overflow.
-	To fix it do: Right-click on Gattaca (the project) > Properties > Configuration Properties > Linker > System > Stack Reserve Size
-	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
-	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum. 
+ \ 3. Test mutation at non-default rate of 0.05.
+ \    Use the mutate() to generate a mutated version of the basic strategy and set rate to 0.05.
+ \    Go through the rules of the mutated version and count the changes made bu mutate().
+ \    Expect 0.05*430*0.75 +- (16.125+-) or between 12 and 20 changes.
 */
-void Test05_CUDA_BCG_Population_Instantiation_1000_Games(void) {
 
-	Population p1 = Population_();
-	Population p2 = Population_();
+void mutate05(void) {
 
-	printf("population size = %d\n", sizeof(p1));
+	Strategy basicStrategy = BasicStrategy_();
+
+	Strategy mutatedStrategy = mutate(&basicStrategy, 0.05);
+
+	int count = 0;
+
+	// Go through the strategy rules and check for changes according to the default rate
+	for (int i = 0; i < NUMBER_RULES; i++) {
+		if (basicStrategy.rules[i] != mutatedStrategy.rules[i]) count++;
+	}
+	// mutation occured when the two strategies have one or more different rules
+	if (count >= 12 && count <= 20) {
+		printf("mutate05: %d changes\n", count);
+		printf("TEST PASSED!\n");
+	}
+	else {
+		printf("mutate05: %d changes\n", count);
+		printf("TEST FAILED!\n");
+	}
+
 }

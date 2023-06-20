@@ -58,7 +58,7 @@
 	4. Test basic strategy vs. strategy 2 has two changes: child will be same as strategy 2 25%.
 
 	// Testing Mutation
-	1. At default rate expect 0.015*430*0.75 +- changes against basic strategy
+	1. At default rate expect 0.015*430*0.75 +- (4.8375+-) or between 3 and 6 changes against basic strategy
 	2. At non-default rate 5% expect 0.05*430*0.75 +- changes against basic strategy
 	3. At non-default rate 0% expect 0 changes against basic strategy
 

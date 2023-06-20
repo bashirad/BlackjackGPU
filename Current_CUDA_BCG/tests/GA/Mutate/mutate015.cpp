@@ -33,32 +33,32 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 /*!
- \ 3. Test for Randomness: Create two parent strategies with different rules.
- \    Use the cross function to generate multiple child strategies.
- \    Print the rules of each child strategy and observe if there is a random alternation of
- \	  genes from both parents.
- \    Analyze the distribution of inherited rules across the child strategies.
+ \ 3. Test mutation at default rate of 0.015.
+ \    Use the mutate function to generate a mutated version of the basic strategy.
+ \    Go through the rules of the mutated version and count the changes made bu mutate().
+ \    Expect 0.015*430*0.75 +- (4.8375+-) or between 3 and 6 changes.
 */
 
-void Test09_GA_Mutate_Mutation_Occured(void) {
+void mutate015(void) {
 
-	Strategy strategy1 = BasicStrategy_();
-	Strategy strategy2 = BasicStrategy_();
+	Strategy basicStrategy = BasicStrategy_();
 
-	srand(0);
-	
-	mutate(&strategy1);
+	Strategy mutatedStrategy = mutate(&basicStrategy);
 
-	bool result = isIdentical(&strategy1, &strategy2);
+	int count = 0;
 
-	
-	
-	if (result) {		// mutation occured when the two strategies have one or more different rules
-		printf("TEST PASSED! Test09_GA_Mutate. Pass = %s\n", result ? "TRUE" : "FALSE");
+	// Go through the strategy rules and check for changes according to the default rate
+	for (int i = 0; i < NUMBER_RULES; i++) {
+		if (basicStrategy.rules[i] != mutatedStrategy.rules[i]) count++;
+	}
+	// mutation occured when the two strategies have one or more different rules
+	if (count >= 3 && count <= 6) {
+		printf("mutate015: %d changes\n", count);
+		printf("TEST PASSED!\n");
 	}
 	else {
-		printf("TEST FAILED! Test09_GA_Mutate. Pass = %s\n", result ? "TRUE" : "FALSE");
+		printf("mutate015: %d changes\n", count);
+		printf("TEST FAILED!\n");
 	}
-
 
 }

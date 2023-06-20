@@ -21,47 +21,29 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include "Strategy.h"
+#include "Game.h"
+#include "Kpax.h"
+#include "Helpers.h"
 
-void Test00_CUDA_BCG_Basic_Env_Check(void);
-void Test01_CUDA_BCG_100_Games(void);
-void Test02_CUDA_BCG_1000_Games(void);
-void Test03_CUDA_BCG_10000_Games(void);
-void Test04_CUDA_BCG_Evolver_3700_Games(void);
-void population_Instantiation(void);
-void isIdentical(void);
-void cross0(void);
-void cross1(void);
-void mutate015(void);
-void mutate0(void);
-void mutate05(void);
+#define NUM_THREADS_PER_BLOCK 5
+#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
+#define NUM_STRATEGIES NUM_THREADS_TOTAL
+#define NUM_GAMES 1000
 
-int main(int argc, char** argv) {
-  void(*tests[])(void) = { 
-    /*Test00_CUDA_BCG_Basic_Env_Check,
-    Test01_CUDA_BCG_100_Games,
-    Test02_CUDA_BCG_1000_Games,
-    Test03_CUDA_BCG_10000_Games,
-    Test04_CUDA_BCG_Evolver_3700_Games,
-    population_Instantiation,*/
-    isIdentical,
-    cross0,
-    cross1,
-    mutate015,
-    mutate0,
-    mutate05
-  };
-  
-  //Basic;
+#include "GA.h"
 
-  int n = sizeof(tests) / sizeof(void*);
+/*!
+	\brief Tests the instantiation of two populations.
+	The two lines below causes the function to crash with a stack overflow.
+	To fix it do: Right-click on Gattaca (the project) > Properties > Configuration Properties > Linker > System > Stack Reserve Size
+	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
+	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum. 
+*/
+void population_Instantiation(void) {
 
-  printf("running tests: %d\n\n", n);
-  for (int k = 0; k < n; k++) {
-    printf("test %02x: ", k);
-    (*tests[k])();
-    printf("\n\n");
-  }
+	Population p1 = Population_();
+	Population p2 = Population_();
 
-  system("pause>0");
+	printf("population size = %d\n", sizeof(p1));
 }
