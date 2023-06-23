@@ -21,6 +21,22 @@
     <ClCompile Include="tests\GA\Evolve\getFittest.cpp" />
     <ClCompile Include="tests\GA\Helpers\Population1.cpp" />
     <ClCompile Include="tests\GA\Evolve\evolve.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play256_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play512_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play1024_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play128_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play64_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play32_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play16_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores10\Play4_10.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play4_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play16_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play32_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play64_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play128_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play256_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play512_100.cpp" />
+    <ClCompile Include="tests\CUDA_BCG\Cores100\Play1024_100.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />
