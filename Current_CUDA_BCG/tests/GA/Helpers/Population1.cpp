@@ -1,5 +1,5 @@
 /*
-Copyright (c) Ron Coleman and Bashir Dahir
+Copyright (c) Ron Coleman
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -19,52 +19,26 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include <time.h>
-#include <stdio.h>
-#include "Strategy.h"
 
-#include "Helpers.h"
+#include "Population.h"
 
-#define NUM_THREADS_PER_BLOCK 5
-#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
-#define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 1000
+Population Population1_() {
 
-#include "GA.h"
-#include "../Helpers/Strategy1.cpp"
-
-/*!
- \ 3. Test basic strategy vs. strategy 1 has one change.
- \    Use the cross function to generate multiple child strategies.
- \    Check the percent of child strategies that are identical to strategy1.
- \    Verify child will be same as Strategy1 50%.
-*/
-
-void cross1(void) {
-
-	Strategy strategy1 = Strategy1_();
+	Strategy strategy1 = BasicStrategy_();
 	Strategy strategy2 = BasicStrategy_();
+	Strategy strategy3 = BasicStrategy_();
+	Strategy strategy4 = BasicStrategy_();
+	Strategy strategy5 = BasicStrategy_();
 
-	srand(time(NULL));
+	// modify pl for strategies to create different fittnesses 
+	strategy1.pl = 50;
+	strategy2.pl = 40;
+	strategy3.pl = 30;
+	strategy4.pl = 20;
+	strategy5.pl = 10;
+	
+	Population population = { 5, 0, 
+		{ strategy1, strategy2, strategy3, strategy4, strategy5 }};
 
-	Strategy child;
-
-	int count = 0;
-
-	for (int i = 0; i < 100; i++) {
-
-		child = cross(&strategy1, &strategy2);
-
-		if (isIdentical(&strategy1, &child)) count++;
-	}
-
-	if (count >= 45 && count <= 55) {
-		printf("cross1\n");
-		printf("TEST PASSED!\n");
-	}
-	else {
-		printf("cross1\n");
-		printf("TEST FAILED!\n");
-	}
-
+	return population;
 }

@@ -1,5 +1,5 @@
 /*
-Copyright (c) Ron Coleman and Bashir Dahir
+Copyright (c) Ron Coleman
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -19,10 +19,11 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include <time.h>
+
 #include <stdio.h>
 #include "Strategy.h"
-
+#include "Game.h"
+#include "Kpax.h"
 #include "Helpers.h"
 
 #define NUM_THREADS_PER_BLOCK 5
@@ -31,40 +32,25 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define NUM_GAMES 1000
 
 #include "GA.h"
-#include "../Helpers/Strategy1.cpp"
+#include "../Helpers/Population1.h"
 
 /*!
- \ 3. Test basic strategy vs. strategy 1 has one change.
- \    Use the cross function to generate multiple child strategies.
- \    Check the percent of child strategies that are identical to strategy1.
- \    Verify child will be same as Strategy1 50%.
+ \    brief Test the getFittest function.
+ \    Use the Population1_() function to build a population, with diff fittnesses.
+ \    Verify getFittest() returns the individual with the highest fittness.
 */
+void getFittest(void) {
 
-void cross1(void) {
+	Population population = Population1_();
 
-	Strategy strategy1 = Strategy1_();
-	Strategy strategy2 = BasicStrategy_();
+	Strategy *fittest = getFittest(&population);
 
-	srand(time(NULL));
-
-	Strategy child;
-
-	int count = 0;
-
-	for (int i = 0; i < 100; i++) {
-
-		child = cross(&strategy1, &strategy2);
-
-		if (isIdentical(&strategy1, &child)) count++;
-	}
-
-	if (count >= 45 && count <= 55) {
-		printf("cross1\n");
+	if (fittest->pl == 50) {
+		printf("getFittest: pl = %f\n", fittest->pl);
 		printf("TEST PASSED!\n");
 	}
 	else {
-		printf("cross1\n");
+		printf("getFittest: pl = %f\n", fittest->pl);
 		printf("TEST FAILED!\n");
 	}
-
 }

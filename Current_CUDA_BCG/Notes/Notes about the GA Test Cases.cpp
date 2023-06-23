@@ -67,9 +67,25 @@
 	2. Test evolve -- crashed
 	3. Test evolve for tracer X and ... 
 
+	SCALE THE GAMES UP:
+		1. try to run on a powers of 2: 32, 64, 128, 512, 1024 strategies first
+		2. try to run more games on each core.
 
-	cout
+	This may need to be looked at: 
+	cudaStatus = cudaDeviceSetLimit(cudaLimitStackSize, LIMIT_STACK_SIZE);
+
+	This should not be set to constant:
+	Create a copy evaluate function that does not use the SEED_CURAND
+			init <<< numBlocks, numThreads/numBlocks >>> (SEED_CURAND, dev_states);
+
+	TODO:
+
+	After 1000 iteration, if the elittest's P&L is the same or less we can terminate the 
+	learning. CONVERGENCE
+	
+	10:15 on Friday
 
 
-
+	Questions:
+	1. why does evolve initialize the entire population with NO_PLAY
 */

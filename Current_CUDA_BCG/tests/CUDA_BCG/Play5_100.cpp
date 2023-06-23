@@ -21,7 +21,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 /*
-test 01:
+Play5_100
 tid        pl     hands      wins blackjack  charlies     loses     busts dealerbjs    pushes
   0 -0.004950       101        32         9         0        27        15         6        12
   1  0.148148       108        48         8         0        24        21         2         5
@@ -46,7 +46,7 @@ tid     plays      none     stays      hits   doubles    splits
 #define NUM_STRATEGIES 5
 #define NUM_GAMES 100
 
-void Test01_CUDA_BCG_100_Games(void) {
+void Play5_100(void) {
 
 	Strategy strategies[NUM_STRATEGIES];
 
@@ -61,8 +61,10 @@ void Test01_CUDA_BCG_100_Games(void) {
 
 	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
 
-	if (status == 0)
+	if (status == 0) {
+		printf("Play5_100\n");
 		report(strategies, statistics, NUM_STRATEGIES);
+	}
 	else
 		fprintf(stderr, "evaluate returned code = %d\n", status);
 }

@@ -97,7 +97,7 @@ Strategy* getFittest(Population* population) {
 }
 
 Population evolve(Population* oldPopulation) {
-	// Initialize the new population -- all individuals have "NO PLAY" strategies.
+	// Initialize the new population -- all individuals have "NO PLAY" strategies. 
 	Population newPopulation = Population_();
 
 	// If elitist, always include the fittest individual in the population.

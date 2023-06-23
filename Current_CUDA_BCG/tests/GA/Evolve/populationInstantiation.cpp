@@ -40,10 +40,17 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	and set this number to 2000000.  This figure works but it likely various by platform, depending on hardware. 
 	How big is Strategy? See https://www.embedded.fm/blog/2016/6/28/how-big-is-an-enum. 
 */
-void population_Instantiation(void) {
+void populationInstantiation(void) {
 
 	Population p1 = Population_();
 	Population p2 = Population_();
 
-	printf("population size = %d\n", sizeof(p1));
+	if (sizeof(p1) == sizeof(p2)) {
+		printf("populationInstantiation: size = %ull\n", sizeof(p1));
+		printf("TEST PASSED!\n");
+	}
+	else {
+		printf("populationInstantiation: size = %ull\n", sizeof(p1));
+		printf("TEST FAILED!\n");
+	}
 }

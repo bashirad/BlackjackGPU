@@ -23,42 +23,52 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <stdio.h>
 #include <stdlib.h>
 
-void Test00_CUDA_BCG_Basic_Env_Check(void);
-void Test01_CUDA_BCG_100_Games(void);
-void Test02_CUDA_BCG_1000_Games(void);
-void Test03_CUDA_BCG_10000_Games(void);
-void Test04_CUDA_BCG_Evolver_3700_Games(void);
-void population_Instantiation(void);
 void isIdentical(void);
 void cross0(void);
 void cross1(void);
 void mutate015(void);
 void mutate0(void);
 void mutate05(void);
+void populationInstantiation(void);
+void getFittest(void);
+void evolve(void);
+
+void Play5_10(void);
+void Play5_100(void);
+void Play100_1000(void);
+void Play128_10000(void);
+void Play256_10000(void);
+
+void Evolver10_3700(void);
 
 int main(int argc, char** argv) {
   void(*tests[])(void) = { 
-    /*Test00_CUDA_BCG_Basic_Env_Check,
-    Test01_CUDA_BCG_100_Games,
-    Test02_CUDA_BCG_1000_Games,
-    Test03_CUDA_BCG_10000_Games,
-    Test04_CUDA_BCG_Evolver_3700_Games,
-    population_Instantiation,*/
-    isIdentical,
+    // Testing the functions of the Genetic Algorithm.
+    /*isIdentical,
     cross0,
     cross1,
     mutate015,
     mutate0,
-    mutate05
+    mutate05,
+    populationInstantiation,
+    getFittest,
+    evolve,*/
+
+    // Testing to play games on the GPU: Play# Cores_# Games
+    //Play5_10,
+    //Play5_100,
+    //Play100_1000,
+    //Play128_10000,   46 seconds
+    Play256_10000,
+    
+    //Evolver10_3700
   };
   
-  //Basic;
-
   int n = sizeof(tests) / sizeof(void*);
 
   printf("running tests: %d\n\n", n);
   for (int k = 0; k < n; k++) {
-    printf("test %02x: ", k);
+    printf("test %02x: \n", k);
     (*tests[k])();
     printf("\n\n");
   }
