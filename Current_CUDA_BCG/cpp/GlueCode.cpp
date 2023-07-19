@@ -25,7 +25,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Population.h"
 
 
-Strategy strategize(Population populuation) {
+Strategy strategize(Population population) {
 
     Strategy str1 = population.individuals[0];
     

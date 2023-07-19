@@ -9,3 +9,5 @@ Strategy strategize(Population populuation);
 /// @param strategy that will be combined into a group of individuals or population.
 /// @return a population that contains the strategies.
 Population popularize (Strategy strategy);
+
+// Testing

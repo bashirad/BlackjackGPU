@@ -85,6 +85,7 @@
     <ClInclude Include="include\Card.h" />
     <ClInclude Include="include\GA.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\GlueCode.h" />
     <ClInclude Include="include\Hand.h" />
     <ClInclude Include="include\Helpers.h" />
     <ClInclude Include="include\Kpax.h" />
@@ -96,6 +97,7 @@
     <ClInclude Include="tests\GA\Helpers\Strategy1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cpp\GlueCode.cpp" />
     <ClCompile Include="Notes\Notes about the GA Test Cases.cpp" />
     <ClCompile Include="cpp\GA.cpp" />
     <ClCompile Include="cpp\Helpers.cpp" />
