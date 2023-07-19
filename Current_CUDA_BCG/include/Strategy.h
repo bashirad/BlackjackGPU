@@ -94,17 +94,6 @@ __host__ __device__ Strategy Strategy_(void);
 */
 __host__ __device__ Strategy BasicStrategy_(void);
 
-/*!
-  \brief Basic strategy constructor
-  \Makes a custome strategy for testing purposes
-*/
-__host__ __device__ Strategy CustomStrategy1_(void);
-
-/*!
-  \brief Basic strategy constructor
-  \Makes a custome strategy for testing purposes
-*/
-__host__ __device__ Strategy CustomStrategy2_(void);
 
 /*!
   \brief Does section IV of strategy

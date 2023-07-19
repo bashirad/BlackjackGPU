@@ -20,23 +20,22 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "GlueCode.h"
+#include "Glue_Code.h"
 #include "Strategy.h"
 #include "Population.h"
-
+#include "GA.h"
 
 Strategy strategize(Population population) {
 
-    Strategy str1 = population.individuals[0];
+    Strategy strategy = population.individuals[0];
     
-    return str1;
+    return strategy;
 }
 
-Population popularize (Strategy strategy) {
+Population popularize(Strategy strategy) {
 
-    int populationSize = 5;
+    // newPopulation take first Strategy and makes another 1023 copies to form a population
+    Population newPopulation = { POPULATION_SIZE, 0, strategy};
 
-	Population newPopulation = { POPULATION_SIZE, 0, { strategy } };
-
-	return newPopulation;
+    return newPopulation;
 }

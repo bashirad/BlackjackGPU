@@ -22,6 +22,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*void isIdentical(void);
 void cross0(void);
@@ -65,7 +66,15 @@ void Play1000000_On_1024(void);
 
 
 int main(int argc, char** argv) {
-  void(*tests[])(void) = { 
+    // Timer for tests
+    time_t start_seconds;
+    time_t end_seconds;
+
+    start_seconds = time(NULL);
+
+    void(*tests[])(void) = {
+
+
     // Testing the functions of the Genetic Algorithm.
     /*isIdentical,
     cross0,
@@ -98,15 +107,19 @@ int main(int argc, char** argv) {
     Play100_On_128,
     Play100_On_256,
     Play100_On_512,*/
-    Play100_On_1024
 
-    /*Play10_On_1024,
-    Play100_On_1024,
-    Play1000_On_1024,
-    Play10000_On_1024,
-    Play100000_On_1024,
-    Play1000000_On_1024 */
+    Play10_On_1024//,                       1       sec
+    //Play100_On_1024//,                    2       sec
+    //Play1000_On_1024//,                   6       sec
+    //Play10000_On_1024,                    48      sec
+    //Play100000_On_1024//,                 485     sec OR 8    min
+    //Play1000000_On_1024                   4868    sec OR 81   min OR 1 hr and 20 min
     
+    // We can use the Play10000_On_1024 to play 10,000,000 games
+    // Each cycle takes 48 sec. 
+    // to play 2 billion games, we need 200 cycles.
+    // That is 200 * 48 seconds = 9600
+    //  9600 / 60 seconds = 160 minutes OR 2 hrs and 40 minutes
   };
   
   int n = sizeof(tests) / sizeof(void*);
@@ -117,6 +130,13 @@ int main(int argc, char** argv) {
     (*tests[k])();
     printf("\n\n");
   }
+
+  end_seconds = time(NULL);
+
+  time_t duration;
+  duration = end_seconds - start_seconds;
+
+  printf("Test lasted for %d seconds ", duration);
 
   system("pause>0");
 }

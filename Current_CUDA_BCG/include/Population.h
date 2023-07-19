@@ -23,7 +23,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #pragma once
 #include "Strategy.h"
 
-#define POPULATION_SIZE 100
+#define POPULATION_SIZE 1024
 #define ELITIST true
 
 /*!

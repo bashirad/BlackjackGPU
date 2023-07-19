@@ -87,7 +87,6 @@
 
 
 	Questions:
-	1. why does evolve initialize the entire population with NO_PLAY? ... 
 
 	The C21 allows any play in any section. CHECKING ... 
 

@@ -43,7 +43,7 @@
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play10000_On_1024.cpp" />
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play100000_On_1024.cpp" />
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play1000000_On_1024.cpp" />
-    <ClCompile Include="cpp\GlueCode.cpp" />
+    <ClCompile Include="cpp\Glue_Code.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />
@@ -58,7 +58,7 @@
     <ClInclude Include="include\Utils.h" />
     <ClInclude Include="tests\GA\Helpers\Strategy1.cpp" />
     <ClInclude Include="tests\GA\Helpers\Population1.h" />
-    <ClInclude Include="include\GlueCode.h" />
+    <ClInclude Include="include\Glue_Code.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\make-env.bat" />

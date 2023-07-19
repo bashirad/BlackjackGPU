@@ -40,6 +40,7 @@ RUN THIS AND PASTE RESULTS HERE
 #define NUM_GAMES 10
 
 void Play10_On_1024(void) {
+
     Strategy strategies[NUM_STRATEGIES];
 
     for (int index = 0; index < NUM_STRATEGIES; index++) {
