@@ -21,7 +21,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 /*
-Play128_10
+Play10_On_16
 tid        pl     hands      wins blackjack  charlies     loses     busts dealerbjs    pushes
   0  0.600000        10         7         0         0         0         3         0         0
   1  0.363636        11         5         2         0         1         1         1         1
@@ -43,10 +43,10 @@ tid     plays      none     stays      hits   doubles    splits
 #include "Kpax.h"
 #include "Helpers.h"
 
-#define NUM_STRATEGIES 128
+#define NUM_STRATEGIES 16
 #define NUM_GAMES 10
 
-void Play128_10(void) {
+void Play10_On_16(void) {
 
 	Strategy strategies[NUM_STRATEGIES];
 
@@ -62,7 +62,7 @@ void Play128_10(void) {
 	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
 
 	if (status == 0) {
-		printf("Play128_10\n");
+		printf("Play10_On_16\n");
 		report(strategies, statistics, NUM_STRATEGIES);
 	}
 	else

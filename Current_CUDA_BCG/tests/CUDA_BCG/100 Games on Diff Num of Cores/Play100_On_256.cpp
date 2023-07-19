@@ -22,7 +22,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 /*
 
-Play1024_100
+Play100_On_256
 tid        pl     hands      wins       bjs  charlies     loses    breaks      dbjs    pushes
   0 -0.004950       101        32         9         0        27        15         6        12
   1  0.148148       108        48         8         0        24        21         2         5
@@ -127,30 +127,12 @@ tid        pl     hands      wins       bjs  charlies     loses    breaks      d
 .
 .
 .
-1000  0.123762       101        46         5         0        22        19         5         4
-1001 -0.019231       104        34         8         0        20        19         8        15
-1002  0.004950       101        32         9         0        24        22         2        12
-1003 -0.085000       100        34         7         0        36        13         2         8
-1004 -0.014706       102        38         7         0        29        15         5         8
-1005 -0.080952       105        34         7         0        32        20         3         9
-1006  0.092233       103        46         3         0        24        15         7         8
-1007  0.089623       106        50         1         0        32        11         1        11
-1008  0.029126       103        39         8         0        29        15         2        10
-1009  0.042857       105        43         5         0        30        13         5         9
-1010 -0.024510       102        41         5         0        29        19         3         5
-1011 -0.024272       103        41         3         0        30        19         3         7
-1012 -0.155340       103        34         4         0        30        22         4         9
-1013  0.274038       104        54         5         0        20        14         3         8
-1014  0.044118       102        44         5         0        30        12         3         8
-1015  0.088235       102        45         4         0        32         6         5        10
-1016 -0.047170       106        41         4         0        33        16         5         7
-1017  0.052381       105        46         3         0        31        13         6         6
-1018 -0.034653       101        37         5         0        25        22         2        10
-1019  0.058252       103        45         4         0        25        14         6         9
-1020  0.064356       101        46         3         0        25        16         3         8
-1021  0.064356       101        42         5         0        29        13         5         7
-1022 -0.137255       102        40         2         0        27        25         4         4
-1023  0.079208       101        43         4         0        17        23         6         8
+250  0.029412       102        40         6         0        26        16         6         8
+251 -0.004902       102        36         5         0        27        18         2        14
+252 -0.019608       102        37         6         0        25        21         4         9
+253  0.089623       106        40         7         0        27        18         3        11
+254 -0.156863       102        35         2         0        30        23         2        10
+255 -0.068627       102        40         4         0        30        18         3         7
 
 tid     total     nones     stays      hits   doubles    splits
   0       146         0        78        59         8         1
@@ -256,30 +238,13 @@ tid     total     nones     stays      hits   doubles    splits
 .
 .
 .
-1000       146         0        69        63        13         1
-1001       151         0        81        64         2         4
-1002       138         0        72        58         7         1
-1003       141         0        79        54         8         0
-1004       139         0        76        52         9         2
-1005       156         0        77        66         8         5
-1006       150         0        79        59         9         3
-1007       142         0        75        47        14         6
-1008       148         0        81        59         5         3
-1009       157         0        82        64         6         5
-1010       154         0        74        73         5         2
-1011       145         0        72        60        10         3
-1012       147         0        71        63        10         3
-1013       152         0        76        60        12         4
-1014       146         0        75        54        15         2
-1015       142         0        85        48         7         2
-1016       152         0        81        56         9         6
-1017       138         0        81        43         9         5
-1018       140         0        69        60        10         1
-1019       152         0        80        62         7         3
-1020       137         0        74        51        11         1
-1021       132         0        75        43        13         1
-1022       153         0        70        74         7         2
-1023       139         0        67        60        11         1
+250       163         0        75        75        11         2
+251       138         0        71        54        11         2
+252       151         0        71        68        10         2
+253       138         0        65        50        17         6
+254       138         0        70        57         9         2
+255       132         0        66        48        16         2
+
 */
 #include <stdio.h>
 #include "Strategy.h"
@@ -287,13 +252,13 @@ tid     total     nones     stays      hits   doubles    splits
 #include "Kpax.h"
 #include "Helpers.h"
 
-#define NUM_BLOCKS 32
+#define NUM_BLOCKS 8
 #define NUM_THREADS_PER_BLOCK 32
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 100
 
-void Play1024_100(void) {
+void Play100_On_256(void) {
     Strategy strategies[NUM_STRATEGIES];
 
     for (int index = 0; index < NUM_STRATEGIES; index++) {
@@ -308,7 +273,7 @@ void Play1024_100(void) {
     int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
 
     if (status == 0) {
-        printf("Play1024_100\n");
+        printf("Play100_On_256\n");
         report(strategies, statistics, NUM_STRATEGIES);
     }
     else

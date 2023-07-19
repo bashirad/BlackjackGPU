@@ -21,7 +21,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 /*
-Play128_100
+Play100_On_128
 tid        pl     hands      wins       bjs  charlies     loses    breaks      dbjs    pushes
   0 -0.004950       101        32         9         0        27        15         6        12
   1  0.148148       108        48         8         0        24        21         2         5
@@ -292,7 +292,7 @@ tid     total     nones     stays      hits   doubles    splits
 #define NUM_STRATEGIES 128
 #define NUM_GAMES 100
 
-void Play128_100(void) {
+void Play100_On_128(void) {
 
 	Strategy strategies[NUM_STRATEGIES];
 
@@ -308,7 +308,7 @@ void Play128_100(void) {
 	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
 
 	if (status == 0) {
-		printf("Play128_100\n");
+		printf("Play100_On_128\n");
 		report(strategies, statistics, NUM_STRATEGIES);
 	}
 	else

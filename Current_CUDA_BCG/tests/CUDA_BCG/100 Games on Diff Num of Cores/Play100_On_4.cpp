@@ -21,20 +21,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 /*
-Play5_10
-tid        pl     hands      wins blackjack  charlies     loses     busts dealerbjs    pushes
-  0  0.600000        10         7         0         0         0         3         0         0
-  1  0.363636        11         5         2         0         1         1         1         1
-  2  0.300000        10         6         0         0         3         0         1         0
-  3 -0.100000        10         4         0         0         0         5         0         1
-  4 -0.200000        10         3         2         0         3         1         1         0
+Play100_On_4
+tid        pl     hands      wins       bjs  charlies     loses    breaks      dbjs    pushes
+  0 -0.004950       101        32         9         0        27        15         6        12
+  1  0.148148       108        48         8         0        24        21         2         5
+  2 -0.062500       104        43         1         0        29        18         4         9
+  3  0.128713       101        42         6         0        20        20         1        12
 
-tid     plays      none     stays      hits   doubles    splits
-  0        16         0         5         9         2         0
-  1        13         0         9         2         1         1
-  2        15         0         9         5         1         0
-  3        12         0         5         7         0         0
-  4        11         0         6         2         3         0
+tid     total     nones     stays      hits   doubles    splits
+  0       146         0        78        59         8         1
+  1       146         0        74        51        13         8
+  2       154         0        75        68         7         4
+  3       144         0        71        64         8         1
 
 */
 #include <stdio.h>
@@ -43,10 +41,10 @@ tid     plays      none     stays      hits   doubles    splits
 #include "Kpax.h"
 #include "Helpers.h"
 
-#define NUM_STRATEGIES 64
-#define NUM_GAMES 10
+#define NUM_STRATEGIES 4
+#define NUM_GAMES 100
 
-void Play64_10(void) {
+void Play100_On_4(void) {
 
 	Strategy strategies[NUM_STRATEGIES];
 
@@ -62,7 +60,7 @@ void Play64_10(void) {
 	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
 
 	if (status == 0) {
-		printf("Play64_10\n");
+		printf("Play100_On_4\n");
 		report(strategies, statistics, NUM_STRATEGIES);
 	}
 	else

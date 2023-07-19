@@ -87,5 +87,34 @@
 
 
 	Questions:
-	1. why does evolve initialize the entire population with NO_PLAY
+	1. why does evolve initialize the entire population with NO_PLAY? ... 
+
+	The C21 allows any play in any section. CHECKING ... 
+
+	Use the initial strategy and randomize it (4 play options) and then play it 1000 times.
+	
+	change it to 1024 for populution size for evolve test case.
+
+	time function to calculate the running time of edge cases. RESEARCH ON IT. output it in the test case.
+
+
+	GLUE CODE:
+
+	loop: couple times and then implement the convergence criteria.
+
+	initialize everything
+
+
+	make a copy of evaluate that can ITERATE.
+
+	popularize
+
+	evolve
+
+	strategize 
+
+
+	elitist will rise from a negative number
+	keep track of the elit of each cycle and check against the current elit; if better, replace the old elite.
+
 */

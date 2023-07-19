@@ -31,33 +31,38 @@ void mutate0(void);
 void mutate05(void);
 void populationInstantiation(void);
 void getFittest(void);
-void evolve(void);*/
-
-void Play4_10(void);
-void Play16_10(void);
-void Play32_10(void);
-void Play64_10(void);
-void Play128_10(void);
-void Play256_10(void);
-void Play512_10(void);
-void Play1024_10(void);
-
-void Play4_100(void);
-void Play16_100(void);
-void Play32_100(void);
-void Play64_100(void);
-void Play128_100(void);
-void Play256_100(void);
-void Play512_100(void);
-void Play1024_100(void);
-
-/*void Play5_10(void);
-void Play5_100(void);
-void Play100_1000(void);
-void Play128_10000(void);
-void Play256_10000(void);
-
+void evolve(void);
 void Evolver10_3700(void);*/
+
+// 10 Games on Diff Num of Cores
+void Play10_On_4(void);
+void Play10_On_16(void);
+void Play10_On_32(void);
+void Play10_On_64(void);
+void Play10_On_128(void);
+void Play10_On_256(void);
+void Play10_On_512(void);
+void Play10_On_1024(void);
+
+// 100 Games on Diff Num of Cores
+void Play100_On_4(void);
+void Play100_On_16(void);
+void Play100_On_32(void);
+void Play100_On_64(void);
+void Play100_On_128(void);
+void Play100_On_256(void);
+void Play100_On_512(void);
+void Play100_On_1024(void);
+
+// Diff Num of Games on 1024 Cores
+void Play10_On_1024(void);
+void Play100_On_1024(void);
+void Play1000_On_1024(void);
+void Play10000_On_1024(void);
+void Play100000_On_1024(void);
+void Play1000000_On_1024(void);
+
+
 
 int main(int argc, char** argv) {
   void(*tests[])(void) = { 
@@ -70,38 +75,38 @@ int main(int argc, char** argv) {
     mutate05,
     populationInstantiation,
     getFittest,
-    evolve,*/
+    evolve,
+    Evolver10_3700,*/
 
     // Testing to play games on the GPU: Play# Cores_# Games
     
-      // Test how many of 1024 cores you can use
-    /*Play4_10,
-    Play16_10,
-    Play32_10,
-    Play64_10,
-    Play128_10,
-    Play256_10,
-    Play512_10,
-    Play1024_10,*/
-
     // Test how many of 1024 cores you can use
-    Play4_100,
-    Play16_100,
-    Play32_100,
-    Play64_100,
-    Play128_100,
-    Play256_100,
-    Play512_100,
-    Play1024_100
-     
+    /*
+    Play10_On_4,
+    Play10_On_16,
+    Play10_On_32,
+    Play10_On_64,
+    Play10_On_128,
+    Play10_On_256,
+    Play10_On_512,
+    Play10_On_1024,
+
+    Play100_On_4,
+    Play100_On_16,
+    Play100_On_32,
+    Play100_On_64,
+    Play100_On_128,
+    Play100_On_256,
+    Play100_On_512,*/
+    Play100_On_1024
+
+    /*Play10_On_1024,
+    Play100_On_1024,
+    Play1000_On_1024,
+    Play10000_On_1024,
+    Play100000_On_1024,
+    Play1000000_On_1024 */
     
-    //Play5_10,
-    //Play5_100,
-    //Play100_1000,
-    //Play128_10000,   // 46 seconds
-    //Play256_10
-    
-    //Evolver10_3700
   };
   
   int n = sizeof(tests) / sizeof(void*);

@@ -21,8 +21,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 /*
-
-Play256_100
+Play100_On_64
 tid        pl     hands      wins       bjs  charlies     loses    breaks      dbjs    pushes
   0 -0.004950       101        32         9         0        27        15         6        12
   1  0.148148       108        48         8         0        24        21         2         5
@@ -88,51 +87,6 @@ tid        pl     hands      wins       bjs  charlies     loses    breaks      d
  61 -0.096154       104        39         4         0        37        20         2         2
  62  0.049505       101        44         2         0        30        15         3         7
  63 -0.044554       101        38         7         0        32        15         3         6
- 64  0.004808       104        35        11         0        30        17         4         7
- 65  0.127451       102        47         4         0        26        15         3         7
- 66  0.131068       103        47         5         0        25        13         5         8
- 67  0.106796       103        43         8         0        26        14         4         8
- 68  0.073529       102        41         7         0        35        10         2         7
- 69 -0.134615       104        35         6         0        32        19         4         8
- 70  0.123762       101        43         5         0        27        14         1        11
- 71 -0.153465       101        33         5         0        24        28         4         7
- 72  0.145631       103        48         4         0        25        15         4         7
- 73 -0.004854       103        39         5         0        28        20         2         9
- 74  0.019417       103        43         6         0        32        13         6         3
- 75  0.144231       104        47         6         0        22        18         1        10
- 76  0.072115       104        46         3         0        16        23         7         9
- 77  0.158654       104        47         5         0        24        19         1         8
- 78  0.142157       102        45         5         0        18        23         4         7
- 79 -0.196078       102        30         4         0        31        29         1         7
- 80 -0.050926       108        44         3         0        37        13         2         9
- 81 -0.074257       101        37         5         0        30        18         2         9
- 82 -0.070000       100        36         6         0        28        19         8         3
- 83  0.098039       102        46         6         0        25        17         1         7
- 84 -0.121359       103        39         1         0        29        20         8         6
- 85 -0.014706       102        30         9         0        29        18         2        14
- 86 -0.299065       107        30         4         0        37        25         3         8
- 87 -0.111650       103        36         5         0        31        20         7         4
- 88  0.101942       103        43         5         0        22        18         2        13
- 89 -0.024752       101        44         1         0        35        10         4         7
- 90 -0.126168       107        34         7         0        39        20         2         5
- 91  0.050000       100        43         4         0        28        12         3        10
- 92 -0.135922       103        33         6         0        39        14         3         8
- 93  0.058824       102        46         2         0        33         8         6         7
- 94  0.077670       103        45         4         0        28        15         4         7
- 95  0.140777       103        46         5         0        24        16         2        10
- 96 -0.074257       101        33         5         0        25        24         3        11
- 97 -0.004854       103        41         7         0        32        14         3         6
- 98  0.158416       101        47         6         0        24        17         0         7
- 99 -0.061905       105        40         7         0        31        20         1         6
-.
-.
-.
-250  0.029412       102        40         6         0        26        16         6         8
-251 -0.004902       102        36         5         0        27        18         2        14
-252 -0.019608       102        37         6         0        25        21         4         9
-253  0.089623       106        40         7         0        27        18         3        11
-254 -0.156863       102        35         2         0        30        23         2        10
-255 -0.068627       102        40         4         0        30        18         3         7
 
 tid     total     nones     stays      hits   doubles    splits
   0       146         0        78        59         8         1
@@ -199,51 +153,6 @@ tid     total     nones     stays      hits   doubles    splits
  61       153         0        72        65        12         4
  62       152         0        70        65        16         1
  63       143         0        77        58         7         1
- 64       141         0        74        50        13         4
- 65       144         0        78        57         7         2
- 66       143         0        78        50        12         3
- 67       140         0        73        50        14         3
- 68       140         0        83        50         5         2
- 69       144         0        68        59        13         4
- 70       143         0        75        55        12         1
- 71       152         0        62        78        11         1
- 72       157         0        75        68        11         3
- 73       154         0        76        68         7         3
- 74       134         0        75        45        11         3
- 75       149         0        77        59         9         4
- 76       167         0        75        82         6         4
- 77       146         0        70        59        13         4
- 78       142         0        70        63         7         2
- 79       138         0        65        63         8         2
- 80       149         0        74        52        15         8
- 81       134         0        69        50        14         1
- 82       138         0        64        57        17         0
- 83       147         0        75        60        10         2
- 84       147         0        69        63        12         3
- 85       137         0        77        51         7         2
- 86       160         0        69        73        11         7
- 87       139         0        70        59         7         3
- 88       147         0        76        63         5         3
- 89       150         0        80        58        11         1
- 90       151         0        75        61         8         7
- 91       145         0        80        57         8         0
- 92       150         0        78        58        11         3
- 93       157         0        84        61        10         2
- 94       148         0        78        57        10         3
- 95       147         0        76        57        11         3
- 96       138         0        67        60        10         1
- 97       143         0        77        53        10         3
- 98       133         0        71        48        13         1
- 99       142         0        70        54        13         5
-.
-.
-.
-250       163         0        75        75        11         2
-251       138         0        71        54        11         2
-252       151         0        71        68        10         2
-253       138         0        65        50        17         6
-254       138         0        70        57         9         2
-255       132         0        66        48        16         2
 
 */
 #include <stdio.h>
@@ -252,30 +161,28 @@ tid     total     nones     stays      hits   doubles    splits
 #include "Kpax.h"
 #include "Helpers.h"
 
-#define NUM_BLOCKS 8
-#define NUM_THREADS_PER_BLOCK 32
-#define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
-#define NUM_STRATEGIES NUM_THREADS_TOTAL
+#define NUM_STRATEGIES 64
 #define NUM_GAMES 100
 
-void Play256_100(void) {
-    Strategy strategies[NUM_STRATEGIES];
+void Play100_On_64(void) {
 
-    for (int index = 0; index < NUM_STRATEGIES; index++) {
-        strategies[index] = BasicStrategy_();
-    }
+	Strategy strategies[NUM_STRATEGIES];
 
-    Game statistics[NUM_STRATEGIES];
-    for (int index = 0; index < NUM_STRATEGIES; index++) {
-        statistics[index] = Game_();
-    }
+	for (int index = 0; index < NUM_STRATEGIES; index++) {
+		strategies[index] = BasicStrategy_();
+	}
 
-    int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
+	Game statistics[NUM_STRATEGIES];
+	for (int index = 0; index < NUM_STRATEGIES; index++) {
+		statistics[index] = Game_();
+	}
 
-    if (status == 0) {
-        printf("Play256_100\n");
-        report(strategies, statistics, NUM_STRATEGIES);
-    }
-    else
-        fprintf(stderr, "evaluate returned code = %d\n", status);
+	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
+
+	if (status == 0) {
+		printf("Play100_On_64\n");
+		report(strategies, statistics, NUM_STRATEGIES);
+	}
+	else
+		fprintf(stderr, "evaluate returned code = %d\n", status);
 }
