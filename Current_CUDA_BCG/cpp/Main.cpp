@@ -24,7 +24,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <stdlib.h>
 #include <time.h>
 
-/*void isIdentical(void);
+void isIdentical(void);
 void cross0(void);
 void cross1(void);
 void mutate015(void);
@@ -33,7 +33,10 @@ void mutate05(void);
 void populationInstantiation(void);
 void getFittest(void);
 void evolve(void);
-void Evolver10_3700(void);*/
+void strategize(void);
+void popularize(void);
+void Evolver10_3700(void);
+
 
 // 10 Games on Diff Num of Cores
 void Play10_On_4(void);
@@ -84,7 +87,9 @@ int main(int argc, char** argv) {
     mutate05,
     populationInstantiation,
     getFittest,
-    evolve,
+    evolve,*/
+    strategize//,
+    /*popularize,
     Evolver10_3700,*/
 
     // Testing to play games on the GPU: Play# Cores_# Games
@@ -108,7 +113,7 @@ int main(int argc, char** argv) {
     Play100_On_256,
     Play100_On_512,*/
 
-    Play10_On_1024//,                       1       sec
+    //Play10_On_1024//,                       1       sec
     //Play100_On_1024//,                    2       sec
     //Play1000_On_1024//,                   6       sec
     //Play10000_On_1024,                    48      sec

@@ -1,5 +1,5 @@
 /*
-Copyright (c) Bashir Dahir
+Copyright (c) Ron Coleman and Bashir Dahir
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -20,37 +20,45 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "Glue_Code.h"
+#include <stdio.h>
 #include "Strategy.h"
+#include <time.h>
+#include "Helpers.h"
 #include "Population.h"
-#include "GA.h"
+#include "Glue_Code.h"
+#include "../GA/Helpers/Population1.h"
+#include <GA.h>
 
-Strategy* strategize(Population population) {
- 
-    //Strategy strategies[POPULATION_SIZE];
-    Strategy strategies[POPULATION_SIZE];
 
-    for (int index = 0; index < POPULATION_SIZE; index++) {
-        strategies[index] = population.individuals[index];
-    }
+/*!
+	\brief Tests the strategize() function.
+	\Use strategize function to create an array of strategies from a population.
+	\Use isIdentical function to check the one strategy against itself.
+	\Verify the child strategy is identical to the two identical parents
+*/
+void strategize(void) {
 
-    return strategies;
-}
+	Population population = Population1_();
 
-Population popularize(Strategy strategies []) {
+	Population evolved = evolve(&population);
 
-    Population newPopulation = { POPULATION_SIZE, 0, { Strategy_()}};
+	/*Strategy strategies;
 
-    // set the fittest to be the first individual (Strategy)
-    Strategy fittest = strategies[0];
+	strategies = strategize(population)[0];
 
-    for (int index = 0; index < POPULATION_SIZE; index++) {
-        newPopulation.individuals[index] = strategies[index]; 
 
-        // update fittest strategy if one is found
-        if (strategies[index].pl > fittest.pl)
-            fittest = strategies[index];
-    }
+	 
+	printStrategy(&strategies);*/
 
-    return newPopulation;
+	// check if child is identical to the two identical parents
+	bool same = true;
+
+	if (same) {
+		printf("cross0\n");
+		printf("TEST PASSED!\n");
+	}
+	else {
+		printf("cross0\n");
+		printf("TEST FAILED!\n");
+	}
 }

@@ -44,6 +44,8 @@
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play100000_On_1024.cpp" />
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play1000000_On_1024.cpp" />
     <ClCompile Include="cpp\Glue_Code.cpp" />
+    <ClCompile Include="tests\Glue_Code\popularize.cpp" />
+    <ClCompile Include="tests\Glue_Code\strategize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />

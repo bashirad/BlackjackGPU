@@ -1,5 +1,5 @@
 /*
-Copyright (c) Bashir Dahir
+Copyright (c) Ron Coleman and Bashir Dahir
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -19,38 +19,41 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
-#include "Glue_Code.h"
+#include <stdio.h>
 #include "Strategy.h"
-#include "Population.h"
+#include <time.h>
+#include "Helpers.h"
+
+#define NUM_THREADS_PER_BLOCK 5
+#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
+#define NUM_STRATEGIES NUM_THREADS_TOTAL
+#define NUM_GAMES 1000
+
 #include "GA.h"
 
-Strategy* strategize(Population population) {
- 
-    //Strategy strategies[POPULATION_SIZE];
-    Strategy strategies[POPULATION_SIZE];
+/*!
+	\brief Tests the isIdentical() and cross() functions.
+	\Use cross function to cross the one strategy against itself.
+	\Use isIdentical function to check the one strategy against itself.
+	\Verify the child strategy is identical to the two identical parents
+*/
+void popularize(void) {
 
-    for (int index = 0; index < POPULATION_SIZE; index++) {
-        strategies[index] = population.individuals[index];
-    }
+	Strategy strategy = BasicStrategy_();
 
-    return strategies;
-}
+	srand(time(NULL));
 
-Population popularize(Strategy strategies []) {
+	Strategy child = cross(&strategy, &strategy);
 
-    Population newPopulation = { POPULATION_SIZE, 0, { Strategy_()}};
+	// check if child is identical to the two identical parents
+	bool same = isIdentical(&strategy, &child);
 
-    // set the fittest to be the first individual (Strategy)
-    Strategy fittest = strategies[0];
-
-    for (int index = 0; index < POPULATION_SIZE; index++) {
-        newPopulation.individuals[index] = strategies[index]; 
-
-        // update fittest strategy if one is found
-        if (strategies[index].pl > fittest.pl)
-            fittest = strategies[index];
-    }
-
-    return newPopulation;
+	if (same) {
+		printf("cross0\n");
+		printf("TEST PASSED!\n");
+	}
+	else {
+		printf("cross0\n");
+		printf("TEST FAILED!\n");
+	}
 }

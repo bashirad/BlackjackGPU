@@ -2,14 +2,14 @@
 #include <Strategy.h>
 #include <Population.h>
 
-/// @brief strategize converts a population into a strategy.
-/// @param populuation that contains individuals of strategies.
-/// @return a strategy individual of the population one at a time.
-Strategy strategize(Population populuation);
+/// @brief strategize converts a population into an array of strategies.
+/// @param populuation that contains individuals/strategies.
+/// @return an array of strategies.
+Strategy* strategize(Population population);
 
-/// @brief popularize converts a strategy into a population.
-/// @param strategy that will be combined into a group of individuals or population.
-/// @return a population that contains the strategies.
-Population popularize(Strategy strategy);
+/// @brief popularize converts an array of strategies into a population.
+/// @param an array of strategies.
+/// @return a population.
+Population popularize(Strategy strategies[]);
 
 // Testing
