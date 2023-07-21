@@ -23,13 +23,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Strategy.h"
 #include <time.h>
 #include "Helpers.h"
-
-#define NUM_THREADS_PER_BLOCK 5
-#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
-#define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 1000
-
 #include "GA.h"
+#include "Glue_Code.h"
 
 /*!
 	\brief Tests the isIdentical() and cross() functions.
@@ -37,23 +32,36 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	\Use isIdentical function to check the one strategy against itself.
 	\Verify the child strategy is identical to the two identical parents
 */
-void popularize(void) {
+void popularizeTest(void) {
 
-	Strategy strategy = BasicStrategy_();
+	Strategy strategies[POPULATION_SIZE];
 
-	srand(time(NULL));
 
-	Strategy child = cross(&strategy, &strategy);
+	for (int index = 0; index < POPULATION_SIZE; index++) {
+		strategies[index] = BasicStrategy_();
+	}
 
-	// check if child is identical to the two identical parents
-	bool same = isIdentical(&strategy, &child);
+	// Declare a Population
+	Population population;
 
-	if (same) {
-		printf("cross0\n");
+	popularize(&population, strategies);
+
+
+	/*// check if the new population has the same size
+	bool check = false;
+	
+	printf("Population size is %d", population.size);
+
+	if (population.size == 5) {
+		check = true;
+	} 
+
+	if (check) {
+		printf("popularizeTest\n");
 		printf("TEST PASSED!\n");
 	}
 	else {
-		printf("cross0\n");
+		printf("popularizeTest\n");
 		printf("TEST FAILED!\n");
-	}
+	}*/
 }

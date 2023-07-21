@@ -31,6 +31,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define NUM_GAMES 1000
 
 #include "GA.h"
+#include <Glue_Code.h>
 
 /*!
 	\brief Tests the isIdentical() and countStrategyDiffs() functions.
@@ -44,6 +45,19 @@ void isIdentical(void) {
 	Strategy strategy1 = BasicStrategy_();
 
 	bool same = isIdentical(&strategy1, &strategy1);
+
+	Strategy strategies[POPULATION_SIZE];
+
+	for (int index = 0; index < POPULATION_SIZE; index++) {
+		strategies[index] = BasicStrategy_();
+	}
+
+	// Declare a Population
+	Population population;
+
+
+	popularize(&population, strategies);
+
 
 	if (same) {
 		printf("isIdentical\n");

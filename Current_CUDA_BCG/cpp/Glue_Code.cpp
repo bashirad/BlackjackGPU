@@ -24,33 +24,30 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Strategy.h"
 #include "Population.h"
 #include "GA.h"
+#include "Helpers.h"
 
-Strategy* strategize(Population population) {
+void strategize(Population* population, Strategy strategies[]) {
  
-    //Strategy strategies[POPULATION_SIZE];
-    Strategy strategies[POPULATION_SIZE];
-
     for (int index = 0; index < POPULATION_SIZE; index++) {
-        strategies[index] = population.individuals[index];
+        strategies[index] = population->individuals[index];
     }
 
-    return strategies;
 }
 
-Population popularize(Strategy strategies []) {
+void popularize(Population* population, Strategy strategies []) {
 
-    Population newPopulation = { POPULATION_SIZE, 0, { Strategy_()}};
-
-    // set the fittest to be the first individual (Strategy)
-    Strategy fittest = strategies[0];
+    population->fittest = 0;
+    population->size = POPULATION_SIZE;
+      
+    int fittest = 0;
 
     for (int index = 0; index < POPULATION_SIZE; index++) {
-        newPopulation.individuals[index] = strategies[index]; 
+        population->individuals[index] = strategies[index];
 
         // update fittest strategy if one is found
-        if (strategies[index].pl > fittest.pl)
-            fittest = strategies[index];
+        if (strategies[index].pl > strategies[fittest].pl)
+            fittest = index;
     }
 
-    return newPopulation;
+    population->fittest = 0;
 }

@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="tests\CUDA_BCG\Play5_10.cpp" />
-    <ClCompile Include="tests\CUDA_BCG\Play5_100.cpp" />
-    <ClCompile Include="tests\CUDA_BCG\Play100_1000.cpp" />
-    <ClCompile Include="tests\CUDA_BCG\Play128_10000.cpp" />
-    <ClCompile Include="tests\CUDA_BCG\Evolver10_3700.cpp" />
     <ClCompile Include="tests\GA\Evolve\populationInstantiation.cpp" />
     <ClCompile Include="cpp\GA.cpp" />
     <ClCompile Include="cpp\Helpers.cpp" />
@@ -44,8 +39,9 @@
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play100000_On_1024.cpp" />
     <ClCompile Include="tests\CUDA_BCG\Diff Num of Games on 1024 Cores\Play1000000_On_1024.cpp" />
     <ClCompile Include="cpp\Glue_Code.cpp" />
-    <ClCompile Include="tests\Glue_Code\popularize.cpp" />
+    <ClCompile Include="tests\Glue_Code\popularizeTest.cpp" />
     <ClCompile Include="tests\Glue_Code\strategize.cpp" />
+    <ClCompile Include="cpp\Engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />

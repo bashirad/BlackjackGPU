@@ -34,7 +34,8 @@ void populationInstantiation(void);
 void getFittest(void);
 void evolve(void);
 void strategize(void);
-void popularize(void);
+void popularizeTest(void);
+void Engine(void);
 void Evolver10_3700(void);
 
 
@@ -79,8 +80,8 @@ int main(int argc, char** argv) {
 
 
     // Testing the functions of the Genetic Algorithm.
-    /*isIdentical,
-    cross0,
+    //isIdentical,
+    /*cross0,
     cross1,
     mutate015,
     mutate0,
@@ -88,9 +89,10 @@ int main(int argc, char** argv) {
     populationInstantiation,
     getFittest,
     evolve,*/
-    strategize//,
-    /*popularize,
-    Evolver10_3700,*/
+    //strategize//,
+    //popularizeTest//,
+    Engine
+    //Evolver10_3700,*/
 
     // Testing to play games on the GPU: Play# Cores_# Games
     

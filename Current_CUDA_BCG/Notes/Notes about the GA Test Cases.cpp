@@ -99,18 +99,18 @@
 
 	GLUE CODE:
 
-	loop: couple times and then implement the convergence criteria.
+	loop: couple times and then implement the convergence criteria.   -- BASIC DONE
 
-	initialize everything
+	initialize everything  -- DONE
 
 
-	make a copy of evaluate that can ITERATE.
+	make a copy of evaluate that can ITERATE.     -- NEED TO MAKE THIS COPY
 
-	popularize
+	popularize  -- DONE
 
-	evolve
+	evolve   -- DONE
 
-	strategize 
+	strategize -- DONE
 
 
 	elitist will rise from a negative number
