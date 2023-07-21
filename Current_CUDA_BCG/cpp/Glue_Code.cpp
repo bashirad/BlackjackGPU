@@ -26,28 +26,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "GA.h"
 #include "Helpers.h"
 
-void strategize(Population* population, Strategy strategies[]) {
- 
+void strategize(Population* population, Strategy* strategies) {
     for (int index = 0; index < POPULATION_SIZE; index++) {
         strategies[index] = population->individuals[index];
     }
-
 }
 
-void popularize(Population* population, Strategy strategies []) {
+void popularize(Population* population, Strategy* strategies) {
 
-    population->fittest = 0;
+    // -1 for fittest initialization 
+    population->fittest = -1;
     population->size = POPULATION_SIZE;
       
-    int fittest = 0;
+    int fittest = -1;
 
     for (int index = 0; index < POPULATION_SIZE; index++) {
         population->individuals[index] = strategies[index];
 
         // update fittest strategy if one is found
-        if (strategies[index].pl > strategies[fittest].pl)
+        if (strategies[index].pl >= strategies[fittest].pl)
             fittest = index;
     }
 
-    population->fittest = 0;
+    population->fittest = fittest;
 }

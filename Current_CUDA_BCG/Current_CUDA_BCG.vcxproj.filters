@@ -41,7 +41,7 @@
     <ClCompile Include="cpp\Glue_Code.cpp" />
     <ClCompile Include="tests\Glue_Code\popularizeTest.cpp" />
     <ClCompile Include="tests\Glue_Code\strategize.cpp" />
-    <ClCompile Include="cpp\Engine.cpp" />
+    <ClCompile Include="cpp\engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Card.h" />

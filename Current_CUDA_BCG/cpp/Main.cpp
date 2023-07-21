@@ -35,7 +35,7 @@ void getFittest(void);
 void evolve(void);
 void strategize(void);
 void popularizeTest(void);
-void Engine(void);
+void engine(void);
 void Evolver10_3700(void);
 
 
@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
     evolve,*/
     //strategize//,
     //popularizeTest//,
-    Engine
+    engine
     //Evolver10_3700,*/
 
     // Testing to play games on the GPU: Play# Cores_# Games

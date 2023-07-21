@@ -32,6 +32,7 @@ run this and paste results here
 #include "Helpers.h"
 #include "Glue_Code.h"
 #include "GA.h"
+#include "Population.h"
 
 #define NUM_BLOCKS 32
 #define NUM_THREADS_PER_BLOCK 32
@@ -39,7 +40,7 @@ run this and paste results here
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 10
 
-void Engine(void) {
+void engine(void) {
     Strategy strategies[NUM_STRATEGIES];
 
     for (int index = 0; index < NUM_STRATEGIES; index++) {
@@ -57,19 +58,10 @@ void Engine(void) {
 
     // loop to implement cycles using the GPU and the Genetic Algorithm
     int status; 
+    Strategy elitist = Strategy_();
 
-    for (int index = 0; index < 1; index++) {
-
-
+    for (int generation = 0; generation < 1; generation++) {
         int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
-
-        popularize(&oldPopulation, strategies);
-
-        newPopulation = 
-            evolve(&oldPopulation);
-      
-        strategize(&newPopulation, strategies);
-
 
         // report at the end of each cycle
         if (status == 0) {
@@ -78,7 +70,19 @@ void Engine(void) {
         }
         else
             fprintf(stderr, "evaluate returned code = %d\n", status);
+
+        popularize(&oldPopulation, strategies);
+
+        int fittestIndex = oldPopulation.fittest;
+
+        elitist = oldPopulation.individuals[fittestIndex];
+
+        // We know what the fittest is at this point
+
+        newPopulation = evolve(&oldPopulation);
+      
+        strategize(&newPopulation, strategies);
     }
 
-
+    // At this point we have the best strategy in elitist
 }
