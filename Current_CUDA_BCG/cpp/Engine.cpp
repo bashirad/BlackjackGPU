@@ -38,7 +38,8 @@ run this and paste results here
 #define NUM_THREADS_PER_BLOCK 32
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 10
+#define NUM_GAMES 100
+#define MAX_SAME_COUNT 100
 
 void engine(void) {
     Strategy strategies[NUM_STRATEGIES];
@@ -47,42 +48,76 @@ void engine(void) {
         strategies[index] = BasicStrategy_();
     }
 
+    // randomizeStrategies(Strategy strategies)
+    // this is a getter method
+    // randomize the rules (in each index)
+    // leave everything else unchanged
+
+    // Convergence criteria
+    // elitist's pl does not continually drop after 10 cycles and the elite
+    
     // Declare a Population
     Population oldPopulation;
     Population newPopulation;
 
-    Game statistics[NUM_STRATEGIES];
-    for (int index = 0; index < NUM_STRATEGIES; index++) {
-        statistics[index] = Game_();
-    }
 
     // loop to implement cycles using the GPU and the Genetic Algorithm
     int status; 
-    Strategy elitist = Strategy_();
+    Strategy bestElite = Strategy_();
+    int count = 0;
 
-    for (int generation = 0; generation < 1; generation++) {
+    for (int generation = 0; generation < 100; generation++) {
+
+        Game statistics[NUM_STRATEGIES];
+        for (int index = 0; index < NUM_STRATEGIES; index++) {
+            statistics[index] = Game_();
+        }
+
         int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
 
         // report at the end of each cycle
         if (status == 0) {
-            printf("Play10000_On_1024\n");
-            report(strategies, statistics, NUM_STRATEGIES);
+            printf("Running generation %d\n", generation);
+            //report(strategies, statistics, NUM_STRATEGIES);
         }
         else
             fprintf(stderr, "evaluate returned code = %d\n", status);
+
+        // loop to copy pl from statistics to strategies 
+        for (int individualIndex = 0; individualIndex < POPULATION_SIZE; individualIndex++) {
+            strategies[individualIndex].pl = getReturn(&statistics[individualIndex]);
+        }
 
         popularize(&oldPopulation, strategies);
 
         int fittestIndex = oldPopulation.fittest;
 
-        elitist = oldPopulation.individuals[fittestIndex];
+        Strategy elite = oldPopulation.individuals[fittestIndex];
+        if (elite.pl > bestElite.pl) {
+            count = 0;
+            bestElite = elite;
+        }
+        else
+            count++;
+
+        if (count >= MAX_SAME_COUNT)
+            break;
 
         // We know what the fittest is at this point
+
+        /* everything above this is working properly but evolve is not working 
+        1. CHECKED! oldPopulation has data since I printed strategy 0 and strategy 1023
+        */
 
         newPopulation = evolve(&oldPopulation);
       
         strategize(&newPopulation, strategies);
+
+        
     }
 
+    // report the bestElite
+    // how did the loop end : did coverge or cycles done?
+    // 
     // At this point we have the best strategy in elitist
 }

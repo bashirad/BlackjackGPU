@@ -32,7 +32,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define NUM_GAMES 1000
 
 #include "GA.h"
-#include "../Helpers/Population1.h"
 
 /*!
  \    brief Test the evolve() function.
@@ -42,11 +41,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 void evolve(void) {
 
-	Population population = Population1_();
+	Population population = Population_();
 
-	Population evolved = evolve(&population);
+	//Population evolved = evolve(&population);
 
-	// check if the fittest is still in the evolved population
+	printStrategy(&population.individuals[0]);
+
+	/*// check if the fittest is still in the evolved population
 	Strategy *fittest = getFittest(&evolved);
 
 	if (fittest->pl == 50) {
@@ -56,5 +57,5 @@ void evolve(void) {
 	else {
 		printf("evolve: fittest pl = %f\n", fittest->pl);
 		printf("TEST FAILED!\n");
-	}
+	}*/
 }

@@ -85,10 +85,10 @@ int main(int argc, char** argv) {
     cross1,
     mutate015,
     mutate0,
-    mutate05,
-    populationInstantiation,
-    getFittest,
-    evolve,*/
+    mutate05,*/
+    //populationInstantiation//,
+    //getFittest,
+    //evolve
     //strategize//,
     //popularizeTest//,
     engine

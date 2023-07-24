@@ -25,6 +25,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Population.h"
 #include "GA.h"
 #include "Helpers.h"
+#include "Game.h"
 
 void strategize(Population* population, Strategy* strategies) {
     for (int index = 0; index < POPULATION_SIZE; index++) {
@@ -49,4 +50,15 @@ void popularize(Population* population, Strategy* strategies) {
     }
 
     population->fittest = fittest;
+}
+
+double getReturn(Game* statistics) {
+
+    int n = sizeof(statistics->count) / sizeof(int);
+    int nohands = 0;
+    for (int index = 0; index < n; index++)
+        nohands += statistics->count[index];
+    double mean = statistics->pl / nohands;
+
+    return mean;
 }

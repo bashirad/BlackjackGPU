@@ -22,16 +22,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <stdio.h>
 #include "Strategy.h"
-#include "Game.h"
-#include "Kpax.h"
-#include "Helpers.h"
-
-#define NUM_THREADS_PER_BLOCK 5
-#define NUM_THREADS_TOTAL (NUM_THREADS_PER_BLOCK * 1)
-#define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 1000
-
 #include "GA.h"
+#include "Population.h"
+
+#define NUM_BLOCKS 32
+#define NUM_THREADS_PER_BLOCK 32
+#define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
+#define NUM_STRATEGIES NUM_THREADS_TOTAL
+#define NUM_GAMES 100
+
 
 /*!
 	\brief Tests the instantiation of two populations.
@@ -42,8 +41,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 void populationInstantiation(void) {
 
+
 	Population p1 = Population_();
 	Population p2 = Population_();
+
+	printf("populationInstatiation is running");
 
 	if (sizeof(p1) == sizeof(p2)) {
 		printf("populationInstantiation: size = %ull\n", sizeof(p1));

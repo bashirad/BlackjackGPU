@@ -26,6 +26,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "Strategy.h"
 #include "Game.h"
 
+
+
 void report(Strategy* strategies, Game* statistics, int numThreads) {
 	printf("%3s %9s %9s %9s %9s %9s %9s %9s %9s %9s\n",
 		"tid", "pl", "hands", "wins", "bjs", "charlies", "loses", "breaks", "dbjs", "pushes");

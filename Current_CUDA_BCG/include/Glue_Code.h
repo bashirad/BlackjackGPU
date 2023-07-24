@@ -1,6 +1,7 @@
 #pragma once
 #include <Strategy.h>
 #include <Population.h>
+#include <Game.h>
 
 /// @brief strategize converts a population into an array of strategies.
 /// @param populuation that contains individuals/strategies.
@@ -12,4 +13,5 @@ void strategize(Population* population, Strategy strategies[]);
 /// @return a population.
 void popularize(Population* population, Strategy strategies[]);
 
-// Testing
+// 
+double getReturn(Game* statistics);
