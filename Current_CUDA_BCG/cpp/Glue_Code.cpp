@@ -65,6 +65,17 @@ double getReturn(Game* statistics) {
     return mean;
 }
 
+double getMean(int n, Strategy* strategies) {
+    double sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += strategies[i].pl;
+    }
+
+    double mean = sum / n;
+
+    return mean;
+}
+
 Strategy randomizeStrategy(Strategy strategy) {
 
     Strategy randomized = strategy;

@@ -33,7 +33,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   \param statistics Result statistics for each strategy
   \return OK if successful, not OK (e.g., the CUDA error) if not ok
 */
-int evaluate(int numThreads, Strategy* strategies, int numGames, Game* statistics);
+int evaluate(int numThreads, Strategy* strategies, int numGames, Game* statistics, int seed);
 
 /*!
   \brief Evaluates a number of strategies with an equal number of threads for a number of games using a number of GPU blocks.
@@ -44,4 +44,4 @@ int evaluate(int numThreads, Strategy* strategies, int numGames, Game* statistic
   \param statistics Result statistics for each strategy
   \return OK if successful, not OK (e.g., the CUDA error) if not ok
 */
-int evaluate(int numBlocks, int numThreads, Strategy* strategies, int numGames, Game* statistics);
+int evaluate(int numBlocks, int numThreads, Strategy* strategies, int numGames, Game* statistics, int seed);

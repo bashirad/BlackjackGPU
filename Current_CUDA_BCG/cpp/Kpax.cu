@@ -804,11 +804,11 @@ __global__ void run(unsigned int numGames, Strategy* strategies, Game* statistic
 
 /////////////// GPU driver
 
-int evaluate(int numThreads, Strategy* strategies, int numGames, Game* statistics) {
-	return evaluate(1, numThreads, strategies, numGames, statistics);
+int evaluate(int numThreads, Strategy* strategies, int numGames, Game* statistics, int seed) {
+	return evaluate(1, numThreads, strategies, numGames, statistics, seed);
 }
 
- int evaluate(int numBlocks, int numThreads, Strategy* strategies, int numGames, Game* statistics) {
+ int evaluate(int numBlocks, int numThreads, Strategy* strategies, int numGames, Game* statistics, int seed) {
 	try {
 //		printf("start evaluate function\n");
 
@@ -842,7 +842,7 @@ int evaluate(int numThreads, Strategy* strategies, int numGames, Game* statistic
 //		printf("cudaMalloc: %d\n",cudaStatus);
 
 		// Invoke kernel to initialize all of the random states
-		init <<< numBlocks, numThreads/numBlocks >>> (SEED_CURAND, dev_states);
+		init <<< numBlocks, numThreads/numBlocks >>> (seed, dev_states);
 //		printf("init random states done!\n");		
 
 		// Check for any errors launching the kernel

@@ -39,8 +39,8 @@ run this and paste results here
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 10000
-#define MAX_SAME_COUNT 10
-#define MAX_GENERATION_COUNT 100
+#define MAX_SAME_COUNT 100
+#define MAX_GENERATION_COUNT 10000
 
 void engine(void) {
 
@@ -66,20 +66,20 @@ void engine(void) {
             statistics[index] = Game_();
         }
 
-        int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
+        int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics, generation);
 
         // report at the end of each cycle
-        if (status == 0) {
-            printf("Running generation %d and P&L is %f\n", generation, bestElite.pl);
-            //report(strategies, statistics, NUM_STRATEGIES);
-        }
-        else
+        if (status != 0) 
             fprintf(stderr, "evaluate returned code = %d\n", status);
 
         // loop to copy pl from statistics to strategies 
         for (int individualIndex = 0; individualIndex < POPULATION_SIZE; individualIndex++) {
             strategies[individualIndex].pl = getReturn(&statistics[individualIndex]);
         }
+
+        double meanPl = getMean(NUM_STRATEGIES, strategies);
+        printf("Running generation %d and the mean P&L is %f\n", generation, meanPl);
+
 
         popularize(&oldPopulation, strategies);
         int fittestIndex = oldPopulation.fittest;

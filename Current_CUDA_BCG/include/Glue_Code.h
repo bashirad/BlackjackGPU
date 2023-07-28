@@ -18,6 +18,8 @@ void popularize(Population* population, Strategy* strategies);
 /// @return a population.
 double getReturn(Game* statistics);
 
+double getMean(int n, Strategy* strategies);
+
 /// @brief popularize converts an array of strategies into a population.
 /// @param an array of strategies.
 /// @return a population.

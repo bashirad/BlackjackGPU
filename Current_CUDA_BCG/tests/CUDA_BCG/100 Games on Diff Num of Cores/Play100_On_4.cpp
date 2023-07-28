@@ -57,7 +57,7 @@ void Play100_On_4(void) {
 		statistics[index] = Game_();
 	}
 
-	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics);
+	int status = evaluate(NUM_STRATEGIES, strategies, NUM_GAMES, statistics, SEED_CURAND);
 
 	if (status == 0) {
 		printf("Play100_On_4\n");
