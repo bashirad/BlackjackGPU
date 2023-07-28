@@ -38,37 +38,30 @@ run this and paste results here
 #define NUM_THREADS_PER_BLOCK 32
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 100
-#define MAX_SAME_COUNT 100
+#define NUM_GAMES 10000
+#define MAX_SAME_COUNT 10
+#define MAX_GENERATION_COUNT 100
 
 void engine(void) {
-    Strategy strategies[NUM_STRATEGIES];
 
+    // Declarations and initializations 
+    Strategy strategies[NUM_STRATEGIES];
     for (int index = 0; index < NUM_STRATEGIES; index++) {
-        strategies[index] = BasicStrategy_();
+        strategies[index] = randomizeStrategy(Strategy_());
     }
 
-    // randomizeStrategies(Strategy strategies)
-    // this is a getter method
-    // randomize the rules (in each index)
-    // leave everything else unchanged
-
-    // Convergence criteria
-    // elitist's pl does not continually drop after 10 cycles and the elite
-    
-    // Declare a Population
     Population oldPopulation;
     Population newPopulation;
 
+    Game statistics[NUM_STRATEGIES];
 
-    // loop to implement cycles using the GPU and the Genetic Algorithm
     int status; 
     Strategy bestElite = Strategy_();
+    bestElite.pl = -999;
     int count = 0;
 
-    for (int generation = 0; generation < 100; generation++) {
+    for (int generation = 0; generation < MAX_GENERATION_COUNT; generation++) {
 
-        Game statistics[NUM_STRATEGIES];
         for (int index = 0; index < NUM_STRATEGIES; index++) {
             statistics[index] = Game_();
         }
@@ -77,7 +70,7 @@ void engine(void) {
 
         // report at the end of each cycle
         if (status == 0) {
-            printf("Running generation %d\n", generation);
+            printf("Running generation %d and P&L is %f\n", generation, bestElite.pl);
             //report(strategies, statistics, NUM_STRATEGIES);
         }
         else
@@ -89,10 +82,9 @@ void engine(void) {
         }
 
         popularize(&oldPopulation, strategies);
-
         int fittestIndex = oldPopulation.fittest;
-
         Strategy elite = oldPopulation.individuals[fittestIndex];
+
         if (elite.pl > bestElite.pl) {
             count = 0;
             bestElite = elite;
@@ -100,24 +92,23 @@ void engine(void) {
         else
             count++;
 
+        // Convergence criteria:
+        // elitist's pl does not continually drop after 10 cycles and the elite
         if (count >= MAX_SAME_COUNT)
             break;
 
         // We know what the fittest is at this point
-
-        /* everything above this is working properly but evolve is not working 
-        1. CHECKED! oldPopulation has data since I printed strategy 0 and strategy 1023
-        */
-
-        newPopulation = evolve(&oldPopulation);
-      
+        newPopulation = evolve(&oldPopulation);     
         strategize(&newPopulation, strategies);
-
-        
     }
 
-    // report the bestElite
     // how did the loop end : did coverge or cycles done?
-    // 
-    // At this point we have the best strategy in elitist
+    if (count < MAX_SAME_COUNT) {
+        printf("Ran out of the %d generations!\n", MAX_GENERATION_COUNT);
+    }
+    else {
+        printf("Converged after the elitist's pl did NOT change for %d cycles!\n", MAX_SAME_COUNT);
+    }
+    report(strategies, statistics, NUM_STRATEGIES);
+    printStrategy(&bestElite);
 }

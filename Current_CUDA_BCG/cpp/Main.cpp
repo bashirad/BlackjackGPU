@@ -36,6 +36,7 @@ void evolve(void);
 void strategize(void);
 void popularizeTest(void);
 void engine(void);
+void randStrategyTest(void);
 void Evolver10_3700(void);
 
 
@@ -91,6 +92,7 @@ int main(int argc, char** argv) {
     //evolve
     //strategize//,
     //popularizeTest//,
+    //randStrategyTest
     engine
     //Evolver10_3700,*/
 

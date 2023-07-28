@@ -19,7 +19,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
+#include "stdio.h"
 #include "Glue_Code.h"
 #include "Strategy.h"
 #include "Population.h"
@@ -35,11 +35,13 @@ void strategize(Population* population, Strategy* strategies) {
 
 void popularize(Population* population, Strategy* strategies) {
 
-    // -1 for fittest initialization 
-    population->fittest = -1;
+    // default index 0 for fittest individual in the population 
+    population->fittest = 0;
     population->size = POPULATION_SIZE;
       
-    int fittest = -1;
+    int fittest = 0;
+
+    int fittestPL = population->individuals[fittest].pl;
 
     for (int index = 0; index < POPULATION_SIZE; index++) {
         population->individuals[index] = strategies[index];
@@ -61,4 +63,29 @@ double getReturn(Game* statistics) {
     double mean = statistics->pl / nohands;
 
     return mean;
+}
+
+Strategy randomizeStrategy(Strategy strategy) {
+
+    Strategy randomized = strategy;
+
+    // Randomly alternate genes from parent 1 and parent 2. 
+    for (int index = 0; index < NUMBER_RULES; index++) {
+        // choose a random number between 0 and 1
+        int lottery = random(1, 4);
+
+        // lottery is working because of the line below
+        //printf("lottery is %d\n", lottery);
+
+        if (lottery == 1)
+            randomized.rules[index] = S;
+        else if (lottery == 2)
+            randomized.rules[index] = H;
+        else if (lottery == 3)
+            randomized.rules[index] = D;
+        else if (lottery == 4)
+            randomized.rules[index] = P;
+    }
+
+    return randomized;
 }
