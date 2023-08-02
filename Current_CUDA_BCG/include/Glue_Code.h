@@ -24,3 +24,18 @@ double getMean(int n, Strategy* strategies);
 /// @param an array of strategies.
 /// @return a population.
 Strategy randomizeStrategy(Strategy strategy);
+
+/// @brief popularize converts an array of strategies into a population.
+/// @param an array of strategies.
+/// @return a population.
+void merge(int arr[], int l, int m, int r);
+
+/// @brief popularize converts an array of strategies into a population.
+/// @param an array of strategies.
+/// @return a population.
+void mergeSort(int arr[], int l, int r);
+
+/// @brief popularize converts an array of strategies into a population.
+/// @param an array of strategies.
+/// @return a population.
+void printArray(int A[], int size);

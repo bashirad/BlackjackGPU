@@ -115,4 +115,15 @@ void engine(void) {
     //report(strategies, statistics, NUM_STRATEGIES);
     //printStrategy(&bestElite);
     printf("meanPL is %f", meanPl);
+
+    // current generation's worst Strategy
+    
+    // current generation's median Strategy: sort and search
+    
+    // current generation's best Strategy 
+    
+    // bestElite: global elite
+    printStrategy(&bestElite);
+    //composite and its P& L is the meanPL
+    
 }

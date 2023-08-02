@@ -138,6 +138,7 @@
     <ClCompile Include="tests\GA\Mutate\mutate0.cpp" />
     <ClCompile Include="tests\GA\Mutate\mutate015.cpp" />
     <ClCompile Include="tests\GA\Mutate\mutate05.cpp" />
+    <ClCompile Include="tests\Glue_Code\mergeSortTest.cpp" />
     <ClCompile Include="tests\Glue_Code\randStrategyTest.cpp" />
     <ClCompile Include="tests\Glue_Code\strategize.cpp" />
     <ClCompile Include="tests\Glue_Code\popularizeTest.cpp" />

@@ -37,6 +37,7 @@ void strategize(void);
 void popularizeTest(void);
 void engine(void);
 void randStrategyTest(void);
+void mergeSortTest(void);
 void Evolver10_3700(void);
 
 
@@ -93,7 +94,8 @@ int main(int argc, char** argv) {
     //strategize//,
     //popularizeTest//,
     //randStrategyTest
-    engine
+    //engine
+    mergeSortTest
     //Evolver10_3700,*/
 
     // Testing to play games on the GPU: Play# Cores_# Games
