@@ -49,6 +49,7 @@ Strategy cross(Strategy* a, Strategy* b);
 */
 Strategy mutate(Strategy* individual);
 Strategy mutate(Strategy* individual, float rate);
+void mutate(Population* mutatedPopulation);
 
 /*!
   \brief Plays tournament among the population.

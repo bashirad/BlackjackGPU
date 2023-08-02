@@ -40,7 +40,9 @@ run this and paste results here
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 10000
 #define MAX_SAME_COUNT 100
-#define MAX_GENERATION_COUNT 10000
+#define MAX_GENERATION_COUNT 1000
+
+
 
 void engine(void) {
 
@@ -55,10 +57,11 @@ void engine(void) {
 
     Game statistics[NUM_STRATEGIES];
 
-    int status; 
+    int status = -1; 
     Strategy bestElite = Strategy_();
     bestElite.pl = -999;
     int count = 0;
+    double meanPl = -1;
 
     for (int generation = 0; generation < MAX_GENERATION_COUNT; generation++) {
 
@@ -77,7 +80,7 @@ void engine(void) {
             strategies[individualIndex].pl = getReturn(&statistics[individualIndex]);
         }
 
-        double meanPl = getMean(NUM_STRATEGIES, strategies);
+        meanPl = getMean(NUM_STRATEGIES, strategies);
         printf("Running generation %d and the mean P&L is %f\n", generation, meanPl);
 
 
@@ -109,6 +112,7 @@ void engine(void) {
     else {
         printf("Converged after the elitist's pl did NOT change for %d cycles!\n", MAX_SAME_COUNT);
     }
-    report(strategies, statistics, NUM_STRATEGIES);
-    printStrategy(&bestElite);
+    //report(strategies, statistics, NUM_STRATEGIES);
+    //printStrategy(&bestElite);
+    printf("meanPL is %f", meanPl);
 }

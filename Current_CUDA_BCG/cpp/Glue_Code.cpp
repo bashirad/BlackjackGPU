@@ -76,26 +76,39 @@ double getMean(int n, Strategy* strategies) {
     return mean;
 }
 
-Strategy randomizeStrategy(Strategy strategy) {
+Strategy randomizeStrategy(Strategy randomized) {
+    Play plays[] = { S, H, D, P };
 
-    Strategy randomized = strategy;
+    Strategy basicStrategy = BasicStrategy_();
+
+    int numOfRules = sizeof(basicStrategy.rules);
+    int splitBoundary = -1;
+    for (int index = 0; index < numOfRules; index++) {
+        Play play = basicStrategy.rules[index];
+        if (play == P) {
+            splitBoundary = index;
+            break;
+        }
+    }
 
     // Randomly alternate genes from parent 1 and parent 2. 
     for (int index = 0; index < NUMBER_RULES; index++) {
-        // choose a random number between 0 and 1
-        int lottery = random(1, 4);
 
-        // lottery is working because of the line below
-        //printf("lottery is %d\n", lottery);
+        int lottery = -1;
 
-        if (lottery == 1)
-            randomized.rules[index] = S;
-        else if (lottery == 2)
-            randomized.rules[index] = H;
-        else if (lottery == 3)
-            randomized.rules[index] = D;
-        else if (lottery == 4)
-            randomized.rules[index] = P;
+        if (index < 11) {
+            lottery = S;
+        } 
+        else if (index < splitBoundary) {
+            // choose a random number between 0 and 1
+            lottery = random(0, 2);
+        } else {
+            lottery = random(0, 3);
+        }
+
+        Play randomPlay = plays[lottery];
+
+        randomized.rules[index] = randomPlay;
     }
 
     return randomized;

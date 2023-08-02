@@ -116,4 +116,13 @@
 	elitist will rise from a negative number
 	keep track of the elit of each cycle and check against the current elit; if better, replace the old elite.
 
+	stl - searching and sorting
+
+	Strategy: 
+		median: sort and search
+		lowest at the end: 
+		highest at the end:
+		bestElite: global elite
+		composite and its P&L is the meanPL
+
 */

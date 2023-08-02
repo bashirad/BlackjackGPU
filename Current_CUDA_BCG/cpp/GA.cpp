@@ -24,6 +24,14 @@ Strategy cross(Strategy* parent1, Strategy* parent2) {
 	return child;
 }
 
+void mutate(Population* mutatedPopulation) {
+
+	for (int index = 0; index < POPULATION_SIZE; index++) {
+		Strategy result = mutate(&mutatedPopulation->individuals[index], MUTATION_RATE);
+
+	}
+}
+
 Strategy mutate(Strategy* strategy) {
 	Strategy result = mutate(strategy, MUTATION_RATE);
 	return result;
@@ -41,8 +49,6 @@ Strategy mutate(Strategy* individual, float rate) {
 	for (int index = 0; index < NUMBER_RULES; index++) {
 		float lottery = random();
 
-		//if (lottery > MUTATION_RATE)
-		//	continue;
 		if (lottery > rate)
 			continue;
 
@@ -117,6 +123,8 @@ Population evolve(Population* oldPopulation) {
 		// Add this child to the new population
 		newPopulation.individuals[index] = child;
 	}
+
+	mutate(&newPopulation);
 
 	return newPopulation;
 }
