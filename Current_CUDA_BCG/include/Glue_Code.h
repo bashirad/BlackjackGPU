@@ -28,14 +28,19 @@ Strategy randomizeStrategy(Strategy strategy);
 /// @brief popularize converts an array of strategies into a population.
 /// @param an array of strategies.
 /// @return a population.
-void merge(int arr[], int l, int m, int r);
+void merge(Strategy* arr, int l, int m, int r);
 
 /// @brief popularize converts an array of strategies into a population.
 /// @param an array of strategies.
 /// @return a population.
-void mergeSort(int arr[], int l, int r);
+void mergeSort(Strategy* arr, int l, int r);
 
 /// @brief popularize converts an array of strategies into a population.
 /// @param an array of strategies.
 /// @return a population.
-void printArray(int A[], int size);
+void printSortedStrategies(Strategy* arr, int size);
+
+/// @brief popularize converts an array of strategies into a population.
+/// @param an array of strategies.
+/// @return a population.
+Strategy combineStrategies(Strategy* strategies, int numStrategies)

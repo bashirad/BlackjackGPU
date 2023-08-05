@@ -113,7 +113,7 @@ Strategy randomizeStrategy(Strategy randomized) {
 
     return randomized;
 }
-
+/*
 void merge(int arr[], int l, int m, int r){
     int i, j, k;
     int n1 = m - l + 1;
@@ -199,6 +199,132 @@ void printArray(int A[], int size) {
     for (i = 0; i < size; i++)
         printf("%d ", A[i]);
     printf("\n");
+}*/
+
+void merge(Strategy* arr, int l, int m, int r) {
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    // Create dynamic memory for temp arrays
+    Strategy* L = (Strategy*)malloc(n1 * sizeof(Strategy));
+    Strategy* R = (Strategy*)malloc(n2 * sizeof(Strategy));
+
+    // Check if memory allocation was successful
+    if (L == NULL || R == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Copy data to temp arrays L[] and R[]
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    // Merge the temp arrays back into arr[l..r]
+    i = 0;
+    j = 0;
+    k = l;
+    while (i < n1 && j < n2) {
+        if (L[i].pl >= R[j].pl) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[]
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[]
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+
+    free(L);
+    free(R);
+}
+
+void mergeSort(Strategy* arr, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+    }
+}
+
+// Function to print the sorted array of strategies
+void printSortedStrategies(Strategy* arr, int size) {
+    printf("Sorted Strategies:\n");
+    for (int i = 0; i < size; i++)
+        printf("pl: %d\n", arr[i].pl);
+}
+
+// Function to combine strategies into a composite strategy
+Strategy combineStrategies(Strategy* strategies, int numStrategies) {
+    Strategy compositeStrategy;
+
+    for (int i = 0; i < NUMBER_RULES; i++) {
+        int voteCount[4] = { 0 }; // Count votes for each choice
+
+        // Count the votes for each choice
+        for (int j = 0; j < numStrategies; j++) {
+            char ruleChoice = strategies[j].rules[i];
+            switch (ruleChoice) {
+            case 'S':
+                voteCount[0]++;
+                break;
+            case 'H':
+                voteCount[1]++;
+                break;
+            case 'D':
+                voteCount[2]++;
+                break;
+            case 'P':
+                voteCount[3]++;
+                break;
+            }
+        }
+
+        // Determine the most voted choice
+        char winningChoice = 'S';
+        int maxVotes = voteCount[0];
+        for (int k = 1; k < 4; k++) {
+            if (voteCount[k] > maxVotes) {
+                maxVotes = voteCount[k];
+                switch (k) {
+                case 1:
+                    winningChoice = 'H';
+                    break;
+                case 2:
+                    winningChoice = 'D';
+                    break;
+                case 3:
+                    winningChoice = 'P';
+                    break;
+                }
+            }
+        }
+
+        // Set the winning choice for the composite strategy
+        compositeStrategy.rules[i] = winningChoice;
+    }
+
+    return compositeStrategy;
 }
 
 

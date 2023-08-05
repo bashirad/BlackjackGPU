@@ -34,17 +34,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 void mergeSortTest(void) {
 
-	int arr[] = { 12, 11, 13, 5, 6, 7 };
-	int arr_size = sizeof(arr) / sizeof(arr[0]);
+	//int arr_size = sizeof(arr) / sizeof(arr[0]);
+	// Declarations and initializations 
+	Strategy strategies[1024];
+	for (int index = 0; index < 1024; index++) {
+		strategies[index] = randomizeStrategy(Strategy_());
+	}
 
 	printf("Given array is \n");
-	printArray(arr, arr_size);
+	printSortedStrategies(strategies, 1024);
 	
 
-	mergeSort(arr, 0, arr_size - 1);
+	mergeSort(strategies, 0, 1024 - 1);
 
 	printf("\nSorted array is \n");
-	printArray(arr, arr_size);
+	printSortedStrategies(strategies, 1024);
 
 	/*// check if the new population has the same size
 	bool check = false;

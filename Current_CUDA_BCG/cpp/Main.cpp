@@ -94,8 +94,8 @@ int main(int argc, char** argv) {
     //strategize//,
     //popularizeTest//,
     //randStrategyTest
-    //engine
-    mergeSortTest
+    engine
+    //mergeSortTest
     //Evolver10_3700,*/
 
     // Testing to play games on the GPU: Play# Cores_# Games

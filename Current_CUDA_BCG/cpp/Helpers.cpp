@@ -127,7 +127,8 @@ void printStrategy(Strategy* strategy) {
 	printf("HIT: %d\n", strategy->visits[HIT]);
 	printf("DOUBLE_DOWN: %d\n", strategy->visits[DOUBLE_DOWN]);
 	printf("SPLIT: %d\n", strategy->visits[SPLIT]);
-	printf("NO_PLAY: %d\n", strategy->visits[NO_PLAY]);
+	printf("NO_PLAY: %d \n", strategy->visits[NO_PLAY]);
+	printf("------------------------------------------------------------------------\n\n");
 }
 
 int countStrategyDiffs(Strategy* strategy1, Strategy* strategy2) {

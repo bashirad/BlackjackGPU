@@ -38,9 +38,12 @@ run this and paste results here
 #define NUM_THREADS_PER_BLOCK 32
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 10000
-#define MAX_SAME_COUNT 100
-#define MAX_GENERATION_COUNT 1000
+//#define NUM_GAMES 10000
+//#define MAX_SAME_COUNT 100
+//#define MAX_GENERATION_COUNT 1000
+#define NUM_GAMES 10
+#define MAX_SAME_COUNT 2
+#define MAX_GENERATION_COUNT 50
 
 
 
@@ -73,7 +76,7 @@ void engine(void) {
 
         // report at the end of each cycle
         if (status != 0) 
-            fprintf(stderr, "evaluate returned code = %d\n", status);
+            fprintf(stderr, "evaluate returned code = %d \n\n", status);
 
         // loop to copy pl from statistics to strategies 
         for (int individualIndex = 0; individualIndex < POPULATION_SIZE; individualIndex++) {
@@ -81,7 +84,7 @@ void engine(void) {
         }
 
         meanPl = getMean(NUM_STRATEGIES, strategies);
-        printf("Running generation %d and the mean P&L is %f\n", generation, meanPl);
+        printf("Running generation %d and the mean P&L is %f \n\n", generation, meanPl);
 
 
         popularize(&oldPopulation, strategies);
@@ -107,23 +110,38 @@ void engine(void) {
 
     // how did the loop end : did coverge or cycles done?
     if (count < MAX_SAME_COUNT) {
-        printf("Ran out of the %d generations!\n", MAX_GENERATION_COUNT);
+        printf("Ran out of the %d generations!\n\n", MAX_GENERATION_COUNT);
     }
     else {
-        printf("Converged after the elitist's pl did NOT change for %d cycles!\n", MAX_SAME_COUNT);
+        printf("Converged after the elitist's pl did NOT change for %d cycles!\n\n", MAX_SAME_COUNT);
     }
-    //report(strategies, statistics, NUM_STRATEGIES);
-    //printStrategy(&bestElite);
-    printf("meanPL is %f", meanPl);
 
-    // current generation's worst Strategy
-    
-    // current generation's median Strategy: sort and search
-    
-    // current generation's best Strategy 
-    
-    // bestElite: global elite
+    // sort the strategies using the P&L
+    mergeSort(strategies, 0, 1024 - 1);
+
+    // Current generation's worst Strategy
+    printf("Current generation's Worst Strategy \n\n");
+    printStrategy(&strategies[1023]);
+
+    // Current generation's median Strategy
+    printf("Current generation's Median Strategy \n\n");
+    printStrategy(&strategies[512]);
+
+    // Current generation's best Strategy 
+    printf("Current generation's Best Strategy \n\n");
+    printStrategy(&strategies[0]);
+
+    // Global Elite: bestElite
+    printf("Global Elite: bestElite \n\n");
     printStrategy(&bestElite);
-    //composite and its P& L is the meanPL
-    
+
+    //Composite and its P& L is the meanPL
+    printf("meanPL is %f \n\n", meanPl);
+    /*
+    Strategy composite = Strategy_();
+    combineStrategies(strategies, NUM_STRATEGIES);
+    composite.pl = meanPl;
+    printStrategy(&composite);*/
+
+    //report(strategies, statistics, NUM_STRATEGIES);
 }
