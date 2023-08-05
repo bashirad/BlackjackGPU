@@ -62,6 +62,11 @@ void engine(void) {
     int count = 0;
     double meanPl = -1;
 
+
+    printf("+--------------+---------------+------------------+\n");
+    printf("|   Generation |   meanP&L     |  MAX_SAME_COUNT  |\n");
+    printf("+--------------+---------------+------------------+\n"); 
+
     for (int generation = 0; generation < MAX_GENERATION_COUNT; generation++) {
 
         for (int index = 0; index < NUM_STRATEGIES; index++) {
@@ -80,8 +85,7 @@ void engine(void) {
         }
 
         meanPl = getMean(NUM_STRATEGIES, strategies);
-        printf("Generation %d meanP&L %f MAX_SAME_COUNT %d \n\n", generation, meanPl, MAX_SAME_COUNT);
-
+        printf("|%14d|%15.6f|%18d|\n", generation, meanPl, MAX_SAME_COUNT);
 
         popularize(&oldPopulation, strategies);
         int fittestIndex = oldPopulation.fittest;
@@ -103,6 +107,8 @@ void engine(void) {
         newPopulation = evolve(&oldPopulation);     
         strategize(&newPopulation, strategies);
     }
+
+    printf("+--------------+---------------+------------------+\n");
 
     // how did the loop end : did coverge or cycles done?
     if (count < MAX_SAME_COUNT) {
