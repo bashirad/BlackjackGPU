@@ -80,7 +80,7 @@ void engine(void) {
         }
 
         meanPl = getMean(NUM_STRATEGIES, strategies);
-        printf("Running generation %d and the mean P&L is %f \n\n", generation, meanPl);
+        printf("Generation %d meanP&L %f MAX_SAME_COUNT %d \n\n", generation, meanPl, MAX_SAME_COUNT);
 
 
         popularize(&oldPopulation, strategies);
