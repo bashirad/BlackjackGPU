@@ -278,43 +278,45 @@ void printSortedStrategies(Strategy* arr, int size) {
 Strategy combineStrategies(Strategy* strategies, int numStrategies) {
     Strategy compositeStrategy;
 
+    compositeStrategy = strategies[0];
+
     for (int i = 0; i < NUMBER_RULES; i++) {
         int voteCount[4] = { 0 }; // Count votes for each choice
 
         // Count the votes for each choice
         for (int j = 0; j < numStrategies; j++) {
-            char ruleChoice = strategies[j].rules[i];
+            Play ruleChoice = strategies[j].rules[i];
             switch (ruleChoice) {
-            case 'S':
+            case S:
                 voteCount[0]++;
                 break;
-            case 'H':
+            case H:
                 voteCount[1]++;
                 break;
-            case 'D':
+            case D:
                 voteCount[2]++;
                 break;
-            case 'P':
+            case P:
                 voteCount[3]++;
                 break;
             }
         }
 
         // Determine the most voted choice
-        char winningChoice = 'S';
+        Play winningChoice = S;
         int maxVotes = voteCount[0];
         for (int k = 1; k < 4; k++) {
             if (voteCount[k] > maxVotes) {
                 maxVotes = voteCount[k];
                 switch (k) {
                 case 1:
-                    winningChoice = 'H';
+                    winningChoice = H;
                     break;
                 case 2:
-                    winningChoice = 'D';
+                    winningChoice = D;
                     break;
                 case 3:
-                    winningChoice = 'P';
+                    winningChoice = P;
                     break;
                 }
             }

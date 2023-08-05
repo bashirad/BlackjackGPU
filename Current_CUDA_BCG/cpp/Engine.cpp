@@ -38,13 +38,9 @@ run this and paste results here
 #define NUM_THREADS_PER_BLOCK 32
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
-//#define NUM_GAMES 10000
-//#define MAX_SAME_COUNT 100
-//#define MAX_GENERATION_COUNT 1000
-#define NUM_GAMES 10
-#define MAX_SAME_COUNT 2
-#define MAX_GENERATION_COUNT 50
-
+#define NUM_GAMES 10000
+#define MAX_SAME_COUNT 150
+#define MAX_GENERATION_COUNT 1000
 
 
 void engine(void) {
@@ -136,12 +132,11 @@ void engine(void) {
     printStrategy(&bestElite);
 
     //Composite and its P& L is the meanPL
-    printf("meanPL is %f \n\n", meanPl);
-    /*
+    printf("Current generation's Composite Strategy \n\n");
     Strategy composite = Strategy_();
-    combineStrategies(strategies, NUM_STRATEGIES);
+    composite = combineStrategies(strategies, NUM_STRATEGIES);
     composite.pl = meanPl;
-    printStrategy(&composite);*/
+    printStrategy(&composite);
 
     //report(strategies, statistics, NUM_STRATEGIES);
 }

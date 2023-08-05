@@ -43,4 +43,4 @@ void printSortedStrategies(Strategy* arr, int size);
 /// @brief popularize converts an array of strategies into a population.
 /// @param an array of strategies.
 /// @return a population.
-Strategy combineStrategies(Strategy* strategies, int numStrategies)
+Strategy combineStrategies(Strategy* strategies, int numStrategies);
