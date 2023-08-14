@@ -96,10 +96,10 @@ Strategy randomizeStrategy(Strategy randomized) {
 
         int lottery = -1;
 
-        if (index < 11) {
-            lottery = S;
-        } 
-        else if (index < splitBoundary) {
+        /*if (index < 10) {
+            lottery = 0;
+        } */
+        if (index < splitBoundary) {
             // choose a random number between 0 and 1
             lottery = random(0, 2);
         } else {
@@ -113,93 +113,6 @@ Strategy randomizeStrategy(Strategy randomized) {
 
     return randomized;
 }
-/*
-void merge(int arr[], int l, int m, int r){
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
-
-    // Create dynamic memory for temp arrays
-    int* L = (int*)malloc(n1 * sizeof(int));
-    int* R = (int*)malloc(n2 * sizeof(int));
-
-    // Check if memory allocation was successful
-    if (L == NULL || R == NULL) {
-        printf("Memory allocation failed.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // Copy data to temp arrays
-    // L[] and R[]
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
-
-    // Merge the temp arrays back
-    // into arr[l..r]
-    // Initial index of first subarray
-    i = 0;
-
-    // Initial index of second subarray
-    j = 0;
-
-    // Initial index of merged subarray
-    k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        }
-        else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
-
-    // Copy the remaining elements
-    // of L[], if there are any
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    // Copy the remaining elements of
-    // R[], if there are any
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-}
-
-// l is for left index and r is
-// right index of the sub-array
-// of arr to be sorted
-void mergeSort(int arr[], int l, int r) {
-    if (l < r) {
-        // Same as (l+r)/2, but avoids
-        // overflow for large l and h
-        int m = l + (r - l) / 2;
-
-        // Sort first and second halves
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
-    }
-}
-
-// UTILITY FUNCTIONS
-// Function to print an array
-void printArray(int A[], int size) {
-    int i;
-    for (i = 0; i < size; i++)
-        printf("%d ", A[i]);
-    printf("\n");
-}*/
 
 void merge(Strategy* arr, int l, int m, int r) {
     int i, j, k;
@@ -267,25 +180,20 @@ void mergeSort(Strategy* arr, int l, int r) {
     }
 }
 
-// Function to print the sorted array of strategies
-void printSortedStrategies(Strategy* arr, int size) {
-    printf("Sorted Strategies:\n");
-    for (int i = 0; i < size; i++)
-        printf("pl: %d\n", arr[i].pl);
-}
-
 // Function to combine strategies into a composite strategy
 Strategy combineStrategies(Strategy* strategies, int numStrategies) {
     Strategy compositeStrategy;
 
-    compositeStrategy = strategies[0];
+    // Initialize with NO_PLAY 
+    compositeStrategy = Strategy_();
 
-    for (int i = 0; i < NUMBER_RULES; i++) {
-        int voteCount[4] = { 0 }; // Count votes for each choice
+    for (int ruleNo = 0; ruleNo < NUMBER_RULES; ruleNo++) {
+        // Count votes for each choice
+        int voteCount[4] = { 0,0,0,0 }; 
 
         // Count the votes for each choice
-        for (int j = 0; j < numStrategies; j++) {
-            Play ruleChoice = strategies[j].rules[i];
+        for (int strategyNo = 0; strategyNo < numStrategies; strategyNo++) {
+            Play ruleChoice = strategies[strategyNo].rules[ruleNo];
             switch (ruleChoice) {
             case S:
                 voteCount[0]++;
@@ -302,13 +210,15 @@ Strategy combineStrategies(Strategy* strategies, int numStrategies) {
             }
         }
 
-        // Determine the most voted choice
+        // default winner is STAY
         Play winningChoice = S;
         int maxVotes = voteCount[0];
-        for (int k = 1; k < 4; k++) {
-            if (voteCount[k] > maxVotes) {
-                maxVotes = voteCount[k];
-                switch (k) {
+
+        // Determine the most voted choice
+        for (int choiceNo = 1; choiceNo < 4; choiceNo++) {
+            if (voteCount[choiceNo] > maxVotes) {
+                maxVotes = voteCount[choiceNo];
+                switch (choiceNo) {
                 case 1:
                     winningChoice = H;
                     break;
@@ -323,7 +233,7 @@ Strategy combineStrategies(Strategy* strategies, int numStrategies) {
         }
 
         // Set the winning choice for the composite strategy
-        compositeStrategy.rules[i] = winningChoice;
+        compositeStrategy.rules[ruleNo] = winningChoice;
     }
 
     return compositeStrategy;

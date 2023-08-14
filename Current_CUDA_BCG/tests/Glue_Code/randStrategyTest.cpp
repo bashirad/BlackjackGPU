@@ -42,7 +42,7 @@ void randStrategyTest(void) {
 		strategies[index] = Strategy_();
 	}*/
 
-	printStrategy(&test);
+	//printStrategy(&test);
 
 	Strategy random = randomizeStrategy(test);
 

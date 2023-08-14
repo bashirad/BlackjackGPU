@@ -38,8 +38,8 @@ run this and paste results here
 #define NUM_THREADS_PER_BLOCK 32
 #define NUM_THREADS_TOTAL (NUM_BLOCKS * NUM_THREADS_PER_BLOCK)
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
-#define NUM_GAMES 10000
-#define MAX_SAME_COUNT 150
+#define NUM_GAMES 100000
+#define MAX_SAME_COUNT 100
 #define MAX_GENERATION_COUNT 1000
 
 
@@ -85,7 +85,7 @@ void engine(void) {
         }
 
         meanPl = getMean(NUM_STRATEGIES, strategies);
-        printf("|%14d|%15.6f|%18d|\n", generation, meanPl, MAX_SAME_COUNT);
+        printf("|%14d|%15.6f|%18d|\n", generation, meanPl, count);
 
         popularize(&oldPopulation, strategies);
         int fittestIndex = oldPopulation.fittest;
@@ -110,12 +110,12 @@ void engine(void) {
 
     printf("+--------------+---------------+------------------+\n");
 
-    // how did the loop end : did coverge or cycles done?
+    // how did the loop end : did it coverge or reach max number of generations?
     if (count < MAX_SAME_COUNT) {
         printf("Ran out of the %d generations!\n\n", MAX_GENERATION_COUNT);
     }
     else {
-        printf("Converged after the elitist's pl did NOT change for %d cycles!\n\n", MAX_SAME_COUNT);
+        printf("Converged: Elitist's P&L did NOT change for %d generations!\n\n", MAX_SAME_COUNT);
     }
 
     // sort the strategies using the P&L
@@ -138,11 +138,10 @@ void engine(void) {
     printStrategy(&bestElite);
 
     //Composite and its P& L is the meanPL
-    printf("Current generation's Composite Strategy \n\n");
     Strategy composite = Strategy_();
     composite = combineStrategies(strategies, NUM_STRATEGIES);
     composite.pl = meanPl;
-    printStrategy(&composite);
 
-    //report(strategies, statistics, NUM_STRATEGIES);
+    printf("Current generation's Composite Strategy \n\n");
+    printStrategy(&composite);
 }
