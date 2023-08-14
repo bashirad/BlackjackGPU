@@ -26,18 +26,16 @@ git clone https://github.com/bashirad/Current_CUDA_BCG.git
 
 Install the necessary dependencies. Make sure you have the following software installed:
 
-### Python (version 3.6 or higher)
-### CUDA toolkit (version compatible with your GPU)
+### Visual Studio 2022 
+### CUDA toolkit version 11.7
 ### NVIDIA GPU driver
-
-Create a virtual environment (optional but recommended) and activate it:
-
-Install the required Python packages using pip:
 
 ## Usage
 Before running the project, ensure that you have a compatible NVIDIA GPU and the required software installed. Here are the basic steps to use the project:
 
-Run the main script to start training the Blackjack model on the GPU:
+Open the Visual Studio project solution file with extension (.sln) = Current_CUDA_BCG.sln.
+
+Run the Main file to start training the Blackjack model on the GPU:
 
 The training process will utilize the GPU for accelerated computations. The script will output progress updates, training statistics, and save the trained model for future use.
 
@@ -58,7 +56,7 @@ Fork the repository on GitHub.
 5. Please ensure that your code follows the project's coding style and conventions. Also, consider adding tests and updating the documentation if necessary.
 
 ## License
-Copyright (c) Ron Coleman
+Copyright (c) Ron Coleman, and Bashir Dahir
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
