@@ -33,6 +33,7 @@ run this and paste results here
 #include "Glue_Code.h"
 #include "GA.h"
 #include "Population.h"
+#include "time.h"
 
 #define NUM_BLOCKS 32
 #define NUM_THREADS_PER_BLOCK 32
@@ -40,7 +41,8 @@ run this and paste results here
 #define NUM_STRATEGIES NUM_THREADS_TOTAL
 #define NUM_GAMES 100000
 #define MAX_SAME_COUNT 100
-#define MAX_GENERATION_COUNT 1000
+//#define MAX_GENERATION_COUNT 1000
+#define MAX_GENERATION_COUNT 1
 
 
 void engine(void) {
@@ -61,7 +63,17 @@ void engine(void) {
     bestElite.pl = -999;
     int count = 0;
     double meanPl = -1;
+    // Timer for tests
+    time_t start_intel_seconds;
+    time_t end_intel_seconds;
+    time_t time_spent_intel;
+    
+    time_t start_GPU_seconds;
+    time_t end_GPU_seconds;
+    time_t time_spent_GPU;
 
+
+    start_intel_seconds = time(NULL);
 
     printf("+--------------+---------------+------------------+\n");
     printf("|   Generation |   meanP&L     |  MAX_SAME_COUNT  |\n");
@@ -73,7 +85,15 @@ void engine(void) {
             statistics[index] = Game_();
         }
 
+        start_GPU_seconds = time(NULL);
+
         int status = evaluate(NUM_BLOCKS, NUM_STRATEGIES, strategies, NUM_GAMES, statistics, generation);
+
+        end_GPU_seconds = time(NULL);
+
+        time_spent_GPU = end_GPU_seconds - start_GPU_seconds;
+
+        printf("time spent on GPU for one generation is %d seconds \n\n", time_spent_GPU);
 
         // report at the end of each cycle
         if (status != 0) 
@@ -144,4 +164,11 @@ void engine(void) {
 
     printf("Current generation's Composite Strategy \n\n");
     printStrategy(&composite);
+
+    end_intel_seconds = time(NULL);
+
+    time_spent_intel = (end_intel_seconds - start_intel_seconds) - time_spent_GPU;
+
+
+    printf("time spent on Intel for one generation is %d seconds \n\n", time_spent_intel);
 }

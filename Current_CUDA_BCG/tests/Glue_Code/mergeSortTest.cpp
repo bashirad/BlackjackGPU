@@ -42,13 +42,13 @@ void mergeSortTest(void) {
 	}
 
 	printf("Given array is \n");
-	printSortedStrategies(strategies, 1024);
+	//printSortedStrategies(strategies, 1024);
 	
 
 	mergeSort(strategies, 0, 1024 - 1);
 
 	printf("\nSorted array is \n");
-	printSortedStrategies(strategies, 1024);
+	//printSortedStrategies(strategies, 1024);
 
 	/*// check if the new population has the same size
 	bool check = false;
